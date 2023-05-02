@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="Stylesheets/SignUp.css">
+
+
+
+
+
+</head>
+
+<body>
+
+    <form class="form1" action="" id="form">
+        <div class="inputs">
+            <label for="type" class="labels">Type Of User</label>
+            <input type="radio" class="type" name="type" value="driver" id="driver" checked><label
+                for="driver">Driver</label>
+            <input type="radio" class="type" name="type" value="passenger" id="passenger"><label
+                for="passenger">Passenger</label>
+
+        </div>
+        <div class="inputs">
+            <label for="name" class="labels">Your Name
+                <input type="text" name="fullName" id="name">
+        </div>
+        <div class="inputs">
+            <label for="password" class="labels">Your Password
+                <input type="password" name="fullName" id="password">
+        </div>
+        <div id="changeable" class="inputs">
+            <label for="email" class="labels">Email</label>
+            <input type="email" name="email" id="email">
+        </div>
+
+        <div class="inputs">
+            <label for="phone" class="labels">Mobile Number
+                <input type="tel" name="phone" id="phone">
+        </div>
+        <div class="inputs" id="rickshawNo">
+            <label for="rickshaw" class="labels">Rickshaw Number
+                <input type="text " name="phone" id="rickshaw">
+        </div>
+        <div>
+            <input type="submit" value="Register">
+            <input type="reset" value="Reset">
+        </div>
+
+
+    </form>
+    <script src="Javascripts/SignUp.js"></script>
+</body>
+
+</html>

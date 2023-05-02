@@ -5,6 +5,7 @@ const DSchema = new mongoose.Schema({
   name: String,
   password: String,
   rickshawNo: String,
+  phoneNo: Number,
   latitude: Number,
   longitude: Number,
   markAsAvailable: Boolean,

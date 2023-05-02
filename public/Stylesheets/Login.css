@@ -1,0 +1,65 @@
+.form1{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5vh;
+}
+.details{
+    margin-top: 5vh;
+}
+.labels{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2vw;
+    margin-right: 4vw;
+}
+#name,#password{
+    width:30vw;
+    height: 5vh;
+    border-radius: 10px;
+}
+.submit{
+    width: 20vw;
+    height: 6vh;
+    color:white;
+    background-color: rgba(0, 128, 0, 0.71);
+    border: 2px solid rgba(0, 128, 0, 0.942);
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 10px;
+    margin-left: 2vw;
+}
+.reset{
+    width: 10vw;
+    height: 6vh;
+    color:white;
+    background-color: rgba(255, 0, 0, 0.71);
+    border: 2px solid rgba(255, 0, 0, 0.942);
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+.submit:hover{
+    background-color: rgba(0, 128, 0, 0.8);
+    /* background-color:white; */
+    /* color: green; */
+    border:2px solid green;
+    cursor: pointer;
+    /* transform: translate(1px,1px); */
+    
+}
+.reset:hover{
+    background-color:rgba(255, 0, 0, 0.8);
+    border:2px solid red;
+    /* color: red; */
+    cursor:pointer;
+    /* transform: translate(1px,1px); */
+}
+.signup{
+    margin-top: 4vh;
+    text-align: center;
+    font-size: larger;
+}

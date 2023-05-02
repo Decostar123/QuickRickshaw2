@@ -2,11 +2,37 @@
   "dependencies": {
     "axios": "^1.3.6",
     "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.0.3",
     "nodemon": "^2.0.22",
+    "path": "^0.12.7",
     "router": "^1.3.8",
     "uuid": "^9.0.0"
-  }
+  },
+  "name": "quickrickshaw",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "serve": "node app.js",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Decostar123/QuickRickshaw.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Decostar123/QuickRickshaw/issues"
+  },
+  "homepage": "https://github.com/Decostar123/QuickRickshaw#readme",
+  "description": "",
+  "proxy": "http://localhost:3000"
 }

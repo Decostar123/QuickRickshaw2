@@ -185,7 +185,10 @@ router.post("/signup", async (req, res) => {
   // .catch((err) => res.json(err));
 });
 
-router.get("/passengers", (req, res) => {});
+router.get("/passengers", async (req, res) => {
+  const result = User.find({ markAsAvailable: true });
+  console.log(result);
+});
 
 // async function getUsers({ lat, long }) {
 //   console.log("in getUsers");

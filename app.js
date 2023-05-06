@@ -7,13 +7,14 @@ const cookieParser = require("cookie-parser");
 const DriverRoute = require("./Driverdata");
 const { v4: uuidv4 } = require("uuid");
 // const Driver = require("./model/Driver");
-
+require("dotenv").config();
+// const CONNECTION_URL =
+//   "mongodb+srv://gecbhavce2021:HmPVZ4RGB3YLVFLQ@rickshawdb.j9axcwl.mongodb.net/rickshawDB";
 mongoose
-  .connect("mongodb://0.0.0.0:27017/quickDB")
+  .connect(process.env.CONNECTION_URL)
   .then((resp) => console.log("connectin successful"))
   .catch((err) => console.log("got error", err));
 
-require("dotenv").config();
 const jwt = require("jsonwebtoken");
 var cors = require("cors");
 app.use(
@@ -37,6 +38,7 @@ const Driver = require("./router/driver");
 const User = require("./router/user");
 
 app.get("/", (req, res) => {
+  console.log("iiipppp", req.ip);
   // console.log(req.socket.remoteAddress);
 
   // console.log(req.ip);

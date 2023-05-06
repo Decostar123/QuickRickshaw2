@@ -1,22 +1,31 @@
+const Driver_Signup = "http://localhost:3000/driver/signup";
+const User_Signup = "http://localhost:3000/user/signup";
 const passenger = document.getElementById("passenger");
 passenger.addEventListener("click", function () {
   const rickshaw = document.querySelector("#rickshawNo");
   rickshaw.style.display = "none";
+  console.log(passenger.checked);
+  console.log(driver.checked);
 });
 const driver = document.getElementById("driver");
+// const passenger = document.getElementById("passenger");
 driver.addEventListener("click", function () {
   const rickshaw = document.querySelector("#rickshawNo");
   rickshaw.style.display = "block";
 });
-
+// const check = driver.checked;
+// console.log(" CHECHKED", check);
 const form = document.querySelector("#form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  const check = driver.checked;
+  console.log(" CHECHKED", check);
   const name = document.querySelector("#name").value;
   const password = document.querySelector("#password").value;
   const email = document.querySelector("#email").value;
   const phoneNo = document.querySelector("#phone").value;
-  const rickshawNo = document.querySelector("#rickshaw").value;
+  const rickshawNo =
+    check === true ? document.querySelector("#rickshaw").value : "XYZ";
   console.log("$$$$", name, password, email, phoneNo, rickshawNo);
   // const a = name.value;
 
@@ -24,7 +33,8 @@ form.addEventListener("submit", (e) => {
   console.log("---", name);
   console.log(data);
   //   http://localhost:3000/driver/signup
-  const SIGNUP_URL = "http://localhost:3000/driver/signup";
+  const SIGNUP_URL = check === true ? Driver_Signup : User_Signup;
+  console.log("SIGBUPURL", SIGNUP_URL);
   const LOGIN_URL = "http://localhost:3000 ";
 
   fetch(SIGNUP_URL, {

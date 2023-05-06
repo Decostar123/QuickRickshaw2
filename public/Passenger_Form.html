@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passenger Form</title>
+    <link rel="stylesheet" href="Stylesheets/Passenger_form.css">
+</head>
+
+<body>
+    <form class="form1" action="">
+        <div class="inputs">
+            <label for="name" class="labels">Name</label>
+            <input type="text" id="name" class="name">
+        </div>
+        <div class="inputs">
+            <label for="source" class="labels">Source</label>
+            <input type="radio" id="curre_loc" name="source" value="current_loc" onclick="current()" checked><label
+                for="current_loc">Current Location</label>
+            <input type="radio" id="choose_loc" name="source" value="choose_loc" onclick="another()"><label
+                for="choose_loc">Choose Another Location</label>
+        </div>
+        <div id="another_loc">
+
+        </div>
+        <div class="inputs">
+            <label for="destination">Destination</label>
+            <input type="text" id="dest_loc" name="destination">
+        </div>
+        <div>
+            <input type="submit" value="Make Entry">
+            <input type="reset" value="Reset">
+        </div>
+    </form>
+    <script>
+        function another() {
+            const source = document.getElementById("another_loc");
+            source.innerHTML = '<label for="source_loc">Choose Source</label><input type="text" name="source_loc" id="source_loc">';
+        }
+        function current() {
+            const source = document.getElementById("another_loc");
+            source.innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

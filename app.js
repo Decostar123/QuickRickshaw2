@@ -34,6 +34,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.set("trust proxy", true);
 
 const Driver = require("./router/driver");
+const User = require("./router/user");
 
 app.get("/", (req, res) => {
   // console.log(req.socket.remoteAddress);
@@ -111,6 +112,8 @@ app.get("/", (req, res) => {
 // });
 
 app.use("/driver", Driver);
+app.use("/user", User);
+
 // app.use("/user", verificationUser, require("./router/user"));
 // app.use("/", verification);
 

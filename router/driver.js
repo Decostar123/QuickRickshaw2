@@ -2,7 +2,7 @@
 // const app = express() ;
 // const cookieParser = require("cookie-parser");
 // app.use(cookieParser());
-var path = require("path");
+const path = require("path");
 const router = require("express").Router();
 const userList = require("../UserData");
 const { v4: uuidv4 } = require("uuid");
@@ -19,6 +19,7 @@ router.post("/", (req, res) => {
 });
 let id = "02ddf53a-10b2-4c9b-94e7-3eea93c13594";
 const Driver = require("../model/Driver");
+const User = require("../model/User");
 router.get("/login", (req, res) => {
   // res.sendFile(__dirname + "") ;
   console.log(__dirname);
@@ -48,8 +49,9 @@ router.post("/login", async (req, res) => {
   const password = req.body.password;
   dname = name;
   dpassword = password;
-  console.log(name, password);
+  console.log(name, password, "%%%%%");
   const data = await Driver.findOne({ name, password });
+  console.log("****", data);
   if (data) {
     // const info = { email: email, password: password };
     // const token = await jwt.sign({ info }, process.env.JWT_KEY, {
@@ -182,6 +184,8 @@ router.post("/signup", async (req, res) => {
   // })
   // .catch((err) => res.json(err));
 });
+
+router.get("/passengers", (req, res) => {});
 
 // async function getUsers({ lat, long }) {
 //   console.log("in getUsers");

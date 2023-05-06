@@ -25,6 +25,7 @@ app.use(
     // credentials : true
   })
 );
+app.set("trust proxy", true);
 app.use(cookieParser());
 app.use(express.static("views"));
 app.use(express.static("./public"));

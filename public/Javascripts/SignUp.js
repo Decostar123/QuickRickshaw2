@@ -1,5 +1,7 @@
-const Driver_Signup = "http://localhost:3000/driver/signup";
-const User_Signup = "http://localhost:3000/user/signup";
+// const Driver_Signup = "http://localhost:3000/driver/signup";
+// const User_Signup = "http://localhost:3000/user/signup";
+const Driver_Signup = "https://quickrickshaws.onrender.com/driver/signup";
+const User_Signup = "https://quickrickshaws.onrender.com/user/signup";
 const passenger = document.getElementById("passenger");
 passenger.addEventListener("click", function () {
   const rickshaw = document.querySelector("#rickshawNo");

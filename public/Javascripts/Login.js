@@ -4,9 +4,12 @@ const userLogin = document.querySelector("#userLogin");
 // driverLogin.onClick = (e) => {
 //   alert(" got clicked ");
 // };
-let SIGNUP_URL = "http://localhost:3000/driver/signup";
-let LOGIN_URL = "http://localhost:3000/driver/login ";
-let DASHBOARD_URL = "http://localhost:3000/driver/dDashBoard ";
+// let SIGNUP_URL = "http://localhost:3000/driver/signup";
+// let LOGIN_URL = "http://localhost:3000/driver/login ";
+// let DASHBOARD_URL = "http://localhost:3000/driver/dDashBoard ";
+let SIGNUP_URL = "https://quickrickshaws.onrender.com/driver/signup";
+let LOGIN_URL = "https://quickrickshaws.onrender.com/driver/login ";
+let DASHBOARD_URL = "https://quickrickshaws.onrender.com/driver/dDashBoard ";
 driverLogin.addEventListener("click", () => {
   alert(" userlogin got clicked ");
   const name = document.querySelector("#name").value;
@@ -40,8 +43,8 @@ userLogin.addEventListener("click", () => {
   const password = document.querySelector("#password").value;
   const data = { name, password };
 
-  LOGIN_URL = "http://localhost:3000/user/login ";
-  DASHBOARD_URL = "http://localhost:3000/user/dDashBoard";
+  LOGIN_URL = "https://quickrickshaws.onrender.com/user/login ";
+  DASHBOARD_URL = "https://quickrickshaws.onrender.com/user/dDashBoard";
   console.log(data);
   console.log(DASHBOARD_URL, "fashboardurl ");
   fetch(LOGIN_URL, {

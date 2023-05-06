@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const driverList = require("../Driverdata");
+// const driverList = require("../Driverdata");
 const { v4: uuidv4 } = require("uuid");
 // const User = require("../model/User");
 const path = require("path");

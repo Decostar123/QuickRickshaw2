@@ -4,7 +4,7 @@
 // app.use(cookieParser());
 const path = require("path");
 const router = require("express").Router();
-const userList = require("../UserData");
+// const userList = require("../UserData");
 const { v4: uuidv4 } = require("uuid");
 router.get("/", (req, res) => {
   res.send("hi");

@@ -16,8 +16,13 @@ mongoose
   .then((resp) => console.log("connectin successful"))
   .catch((err) => console.log("got error", err));
 
+// const accountSid = "AC6311c17ca87cf589def81f6e2d98b7c5";
+// const authToken = "3286ab26c1978952e7954497e56b8c2d";
+// const verifySid = "VAf2a22fc41ace06f1d255e250ff25e512";
+// const client = require("twilio")(accountSid, authToken);
+
 const accountSid = "AC6311c17ca87cf589def81f6e2d98b7c5";
-const authToken = "3286ab26c1978952e7954497e56b8c2d";
+const authToken = "3e17ba4da88f28a679fecc1196e2f850";
 const verifySid = "VAf2a22fc41ace06f1d255e250ff25e512";
 const client = require("twilio")(accountSid, authToken);
 
@@ -111,12 +116,15 @@ let phoneNo = "";
 app.post("/getOtp", (req, res) => {
   console.log("otp sended");
   phoneNo = req.body.phoneNo;
+  console.log( "server phoneNo id " , phoneNo ) ; 
   client.verify.v2
     .services(verifySid)
     .verifications.create({ to: `${phoneNo}`, channel: "sms" })
     .then((verification) => console.log(verification.status))
     .then(() => res.json({ key: true }))
-    .catch(() => res.json({ key: false }));
+    .catch((e) => {
+        console.log( e ) ; 
+      res.json({ key: false }) } );
 });
 
 // app.post("/verifyOtp", (req, res) => {

@@ -1,6 +1,12 @@
 console.log(" this is the login js ");
 const driverLogin = document.querySelector("#driverLogin");
 const userLogin = document.querySelector("#userLogin");
+
+const pop=document.getElementById("popup");
+
+function closepopup(){
+  pop.classList.remove("openpopup");
+}
 // driverLogin.onClick = (e) => {
 //   alert(" got clicked ");
 // };
@@ -35,6 +41,8 @@ driverLogin.addEventListener("click", () => {
           window.location.href = DASHBOARD_URL;
         } else {
           alert(" need to signup  ");
+          pop.classList.add("openpopup");
+
         }
       });
   } else {
@@ -73,7 +81,10 @@ userLogin.addEventListener("click", () => {
           window.location.href = DASHBOARD_URL;
         } else {
           alert(" need to signup  ");
+          pop.classList.add("openpopup");
         }
+      }).catch(e=>{
+        alert("Some error occur.");
       });
   } else {
     alert("allow location acess !!!! ");

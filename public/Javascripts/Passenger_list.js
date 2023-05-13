@@ -1,16 +1,21 @@
-const passengers = [
-  { name: "A", phoneNo: "123" },
-  { name: "B", phoneNo: "456" },
-  {
-    name: "C",
-    phoneNo: "789",
-  },
-];
+// const passengers = [
+//   { name: "A", phoneNo: "123" },
+//   { name: "B", phoneNo: "456" },
+//   {
+//     name: "C",
+//     phoneNo: "789",
+//   },
+// ];
+const PASSENGER_LIST = "http://localhost:3000/driver/passengers";
 
-window.onload = () => {
+window.onload = async () => {
   const table = document.querySelector("#table");
   console.log(table.innerHTML, "44444");
   console.log(table);
+  const resp = await fetch(PASSENGER_LIST);
+  const data = await resp.json();
+  const passengers = data.result;
+
   for (entry of passengers) {
     var row = table.insertRow();
     var cell1 = row.insertCell(0);
@@ -25,5 +30,5 @@ window.onload = () => {
     cell3.innerHTML = "3";
     cell4.innerHTML = "4";
   }
-  console.log(table.innerHTML);
+  console.log(passengers);
 };

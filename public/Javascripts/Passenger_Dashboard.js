@@ -6,6 +6,9 @@ const DNotAvailable = document.querySelector("#DNotAvailable");
 const PASSENGER_URL = "http://localhost:3000/user/driverList";
 const DAvailable_URL = "http://localhost:3000/user/PAvailable";
 const PNotAvailable_URL = "http://localhost:3000/user/PNotAvailable";
+// const PASSENGER_URL = "https://quickrickshaws.onrender.com/user/driverList";
+// const DAvailable_URL = "https://quickrickshaws.onrender.com/user/PAvailable";
+// const PNotAvailable_URL = "https://quickrickshaws.onrender.com/user/PNotAvailable";
 
 passengerList.addEventListener("click", () => {
   window.open(PASSENGER_URL);

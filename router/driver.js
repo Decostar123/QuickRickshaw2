@@ -2,8 +2,10 @@
 // const app = express() ;
 // const cookieParser = require("cookie-parser");
 // app.use(cookieParser());
+const jwt = require("jsonwebtoken");
 const path = require("path");
 const router = require("express").Router();
+
 // const userList = require("../UserData");
 const { v4: uuidv4 } = require("uuid");
 router.get("/", (req, res) => {
@@ -11,6 +13,8 @@ router.get("/", (req, res) => {
 });
 let dname = "";
 let dpassword = "";
+let latitude = 0;
+let longitude = 0;
 router.post("/", (req, res) => {
   console.log(" ************************ ");
   console.log(req.body);
@@ -35,7 +39,47 @@ router.get("/login", (req, res) => {
 
   // res.sendFile(__dirname + "/../public/Login.html");
 });
+
+router.get("/DIPAddress", async (req, res) => {
+  // const IPAddress = req.ip;
+  console.log(req.ip);
+  const IPAddress = "157.32.4.237";
+  const entry = await Driver.findOne({ name: dname, password: dpassword });
+  const url = "http://ip-api.com/json/" + IPAddress;
+  const resp = await fetch(url);
+  const location = await resp.json();
+  entry.latitude = location.lat;
+  entry.longitude = location.lon;
+
+  console.log(location);
+
+  const temp = path.resolve(__dirname, "..");
+  // console.log(temp);
+  console.log("*****", temp);
+  // res.json({ dashboard: "dashboard" });
+  console.log(temp + "/public/Driver_Dashboard.html");
+  res.sendFile(temp + "/public/Driver_Dashboard.html");
+});
 router.get("/dDashBoard", async (req, res) => {
+  const token = req.cookies.DRIVER_JWT_KEY;
+  const data = await jwt.verify(token, process.env.DRIVER_JWT_KEY);
+  dname = data.info.dname;
+  dpassword = data.info.dpassword;
+  console.log("dname", dname, "dpaasword", dpassword);
+
+  const entry = await Driver.findOne({ name: dname, password: dpassword });
+  const IPAddress = "157.32.4.237";
+  const url = "http://ip-api.com/json/" + IPAddress;
+  const resp = await fetch(url);
+  const location = await resp.json();
+  entry.longitude = location.lon;
+  entry.latitude = location.lat;
+  longitude = location.lon;
+  latitude = location.lat;
+  console.log("(((", entry);
+
+  console.log("ppname", dname, "ppasswird", dpassword);
+
   const temp = path.resolve(__dirname, "..");
   // console.log(temp);
   console.log("*****", temp);
@@ -59,6 +103,25 @@ router.post("/login", async (req, res) => {
     // });
     // console.log( tokrn ) ;
     // res.cookie("DRIVER_JWT_KEY", token);
+    // const IPAddress = req.ip;
+    const IPAddress = "157.32.4.237";
+    const url = "http://ip-api.com/json/" + IPAddress;
+    const resp = await fetch(url);
+    const location = await resp.json();
+    data.longitude = location.lon;
+    data.latitude = location.lat;
+    console.log(data);
+    longitude = location.lon;
+    latitude = location.lat;
+
+    const info = { dname: dname, dpassword: dpassword };
+    const token = await jwt.sign({ info }, process.env.DRIVER_JWT_KEY, {
+      expiresIn: "172800s",
+    });
+    console.log(token);
+
+    res.cookie("DRIVER_JWT_KEY", token);
+
     res.json({ key: true });
   } else {
     res.json({ key: false });
@@ -137,8 +200,7 @@ router.post("/signup", async (req, res) => {
   const phoneNo = req.body.phoneNo;
   // const latitude = req.body.latitude;
   // const longitude = req.body.longitude;
-  const latitude = 12;
-  const longitude = 12;
+
   console.log("name", name);
   console.log(uuid, email, password, name, rickshawNo, phoneNo);
   // res.json({ key: true });
@@ -186,10 +248,32 @@ router.post("/signup", async (req, res) => {
 });
 
 router.get("/passengers", async (req, res) => {
-  const result = User.find({ markAsAvailable: true });
+  let result = await User.find({ markAsAvailable: true });
+  result = result.filter((ele) => {
+    const lat = ele.latitude;
+    const lon = ele.longitude;
+    const distance = measure(latitude, longitude, lat, lon);
+    return distance <= 100000;
+  });
+  console.log(" got the result of passwmger from USeR");
   console.log(result);
+  res.json({ result: result });
 });
-
+function measure(lat1, lon1, lat2, lon2) {
+  // generally used geo measurement function
+  var R = 6378.137; // Radius of earth in KM
+  var dLat = (lat2 * Math.PI) / 180 - (lat1 * Math.PI) / 180;
+  var dLon = (lon2 * Math.PI) / 180 - (lon1 * Math.PI) / 180;
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return d * 1000; // meters
+}
 // async function getUsers({ lat, long }) {
 //   console.log("in getUsers");
 //   let data = [];

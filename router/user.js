@@ -1,18 +1,41 @@
 const router = require("express").Router();
 // const driverList = require("../Driverdata");
 const { v4: uuidv4 } = require("uuid");
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 // const User = require("../model/User");
 const path = require("path");
 let pname = "",
   ppassword = "";
+let longitude = 0;
+let latitude = 0;
+
 router.get("/", (req, res) => {
   res.json({ key: "Welcome user" });
   // res.render("driverDsdhboard")
 });
 router.get("/dDashBoard", async (req, res) => {
+  const token = req.cookies.USER_JWT_KEY;
+  const data = await jwt.verify(token, process.env.USER_JWT_KEY);
+  pname = data.info.pname;
+  ppassword = data.info.ppassword;
+
+  const entry = await User.findOne({ name: pname, password: ppassword });
+  const IPAddress = "157.32.4.237";
+  const url = "http://ip-api.com/json/" + IPAddress;
+  const resp = await fetch(url);
+  const location = await resp.json();
+  entry.longitude = location.lon;
+  entry.latitude = location.lat;
+  longitude = location.lon;
+  latitude = location.lat;
+  console.log("(((", entry);
+
+  console.log("ppname", pname, "ppasswird", ppassword);
   const temp = path.resolve(__dirname, "..");
   // console.log(temp);
   console.log("*****", temp);
+  // console.log(req.query.valid);
   // res.json({ dashboard: "dashboard" });
   console.log(temp + "/public/Passenger_Dashboard.html");
   res.sendFile(temp + "/public/Passenger_Dashboard.html");
@@ -20,6 +43,7 @@ router.get("/dDashBoard", async (req, res) => {
 
 let id = "02ddf53a-10b2-4c9b-94e7-3eea93c13594";
 const User = require("../model/User");
+const Driver = require("../model/Driver");
 router.post("/login", async (req, res) => {
   // console.log(req.cookies);
   const name = req.body.name;
@@ -38,6 +62,25 @@ router.post("/login", async (req, res) => {
     // });
     // console.log( tokrn ) ;
     // res.cookie("DRIVER_JWT_KEY", token);
+    // const info = { email: email, password: password };
+
+    // const IPAddress = "157.32.4.237";
+    // const url = "http://ip-api.com/json/" + IPAddress;
+    // const resp = await fetch(url);
+    // const location = await resp.json();
+    // data.longitude = location.lon;
+    // data.latitude = location.lat;
+    // longitude = location.lon;
+    // latitude = location.lat;
+    // console.log(data);
+    const info = { pname: pname, ppassword: ppassword };
+    const token = await jwt.sign({ info }, process.env.USER_JWT_KEY, {
+      expiresIn: "172800s",
+    });
+    console.log(token);
+
+    res.cookie("USER_JWT_KEY", token);
+
     res.json({ key: true });
   } else {
     res.json({ key: false });
@@ -123,6 +166,14 @@ router.post("/signup", async (req, res) => {
 
     // res.cookie("DRIVER_JWT_KEY", token);
 
+    // const info = { pname: name, ppassword: password };
+    // const token = await jwt.sign({ info }, process.env.USER_JWT_KEY, {
+    //   expiresIn: "172800s",
+    // });
+    // console.log(token);
+
+    // res.cookie("USER_JWT_KEY", token);
+
     const drv = new User({
       uuid,
       email,
@@ -163,4 +214,31 @@ router.get("/PNotAvailable", async (req, res) => {
     res.json({ key: false });
   }
 });
+
+router.get("/drivers", async (req, res) => {
+  let result = await Driver.find({ markAsAvailable: true });
+  result = result.filter((ele) => {
+    const lat = ele.latitude;
+    const lon = ele.longitude;
+    const distance = measure(latitude, longitude, lat, lon);
+    return distance <= 100000;
+  });
+  console.log(result);
+  res.json({ result: result });
+});
+function measure(lat1, lon1, lat2, lon2) {
+  // generally used geo measurement function
+  var R = 6378.137; // Radius of earth in KM
+  var dLat = (lat2 * Math.PI) / 180 - (lat1 * Math.PI) / 180;
+  var dLon = (lon2 * Math.PI) / 180 - (lon1 * Math.PI) / 180;
+  var a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  var d = R * c;
+  return d * 1000; // meters
+}
 module.exports = router;

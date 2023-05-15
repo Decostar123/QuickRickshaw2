@@ -1,6 +1,7 @@
 console.log(" this is the login js ");
 const driverLogin = document.querySelector("#driverLogin");
 const userLogin = document.querySelector("#userLogin");
+const aler=document.getElementsByClassName("custom-alert")[0];
 
 const pop=document.getElementById("popup");
 
@@ -22,6 +23,7 @@ driverLogin.addEventListener("click", () => {
   if (resp) {
     const name = document.querySelector("#name").value;
     const password = document.querySelector("#password").value;
+    
     const data = { name, password };
 
     console.log(data, "frontened");
@@ -38,10 +40,11 @@ driverLogin.addEventListener("click", () => {
         console.log("client", DASHBOARD_URL);
         if (data.key) {
           console.log(" shwinf the dashboard ");
+          aler.style.visibility="hidden";
           window.location.href = DASHBOARD_URL;
         } else {
-          alert(" need to signup  ");
-          pop.classList.add("openpopup");
+          
+          aler.style.visibility="visible";
 
         }
       });
@@ -78,10 +81,10 @@ userLogin.addEventListener("click", () => {
         console.log("client", DASHBOARD_URL);
         if (data.key) {
           console.log(" shwinf the dashboard ");
+          aler.style.visibility="hidden";
           window.location.href = DASHBOARD_URL;
         } else {
-          alert(" need to signup  ");
-          pop.classList.add("openpopup");
+          aler.style.visibility="visible";
         }
       }).catch(e=>{
         alert("Some error occur.");

@@ -7,10 +7,10 @@
 }
 .otp-box{
     position: fixed;
-    top:5%;
+    top:10%;
     left:40%;
     z-index:2;
-    display:none;
+    visibility:hidden;
 }
 
 .signup{

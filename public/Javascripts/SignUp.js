@@ -9,6 +9,9 @@ const password = document.querySelector("#password");
 const rickshaw=document.querySelector("#rickshaw");
 const driver = document.getElementById("driver");
 const otpbox= document.getElementById("otpbox");
+const spanotp=document.getElementById("spanotp");
+const eroorMessage=document.getElementById("eroorMessage");
+
 const nameclass=name1.classList;
 const emailclass=email1.classList;
 const phoneclass=phone.classList;
@@ -125,7 +128,7 @@ rickshaw.addEventListener("input",function(){
   }
 });
 
-var formstatus=((nameclass.contains("is-valid")) && (emailclass.contains("is-valid")) && (phoneclass.contains("is-valid")) && (passclass.contains("is-valid")) && ((driver.checked && rickclass.contains("is-valid")) || passenger.checked));
+
 
 const passenger = document.getElementById("passenger");
 passenger.addEventListener("click", function () {
@@ -160,36 +163,38 @@ form.addEventListener("submit", async (e) => {
   const name = document.querySelector("#name").value;
   const password = document.querySelector("#password").value;
   const email = document.querySelector("#email").value;
-  const phoneNo = document.querySelector("#phone").value;
+  let phoneNo = document.querySelector("#phone").value;
   const error = document.querySelector("#error");
   const rickshawNo =
     check === true ? document.querySelector("#rickshaw").value : "XYZ";
   console.log("$$$$", name, password, email, phoneNo, rickshawNo);
+  spanotp.value=phoneNo;
+  phoneNo="+91"+phoneNo;
+  var formstatus=((nameclass.contains("is-valid")) && (emailclass.contains("is-valid")) && (phoneclass.contains("is-valid")) && (passclass.contains("is-valid")) && ((driver.checked && rickclass.contains("is-valid")) || passenger.checked));
   if(formstatus){
-    otpbox.style.display="block";
-    console.log("yah");
-    content.style.visibility="hidden";
-  }
-  console.log(formstatus);
-  const otpurl = "http://localhost:3000/getOtp";
-  const verifyOtp = "http://localhost:3000/verifyOtp";
-  // const phoneNo = document.querySelector("#phone").value;
-  const data1 = { phoneNo: phoneNo };
-  console.log("phone no is -- "+ phoneNo ) ; 
-  const res1 = await fetch(otpurl, {
-    method: "post",
-    headers: {
-      "Content-Type": "Application/json",
-    },
-    body: JSON.stringify(data1),
-  });
-  const resp1 = await res1.json();
-  if (!resp1.key) {
-    alert(" Some error occured ");
-  }
-  else{
-    form.style.visibility="hidden";
-    otpbody.style.visibility="visible";
+    console.log("formstatus");
+    
+    
+    const otpurl = "http://localhost:3000/getOtp";
+    const verifyOtp = "http://localhost:3000/verifyOtp";
+    // const phoneNo = document.querySelector("#phone").value;
+    const data1 = { phoneNo: phoneNo };
+    console.log("phone no is -- "+ phoneNo ) ; 
+    const res1 = await fetch(otpurl, {
+      method: "post",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(data1),
+    });
+    const resp1 = await res1.json();
+    if (!resp1.key) {
+      alert(" Some error occured ");
+    }
+    else{
+      otpbox.style.visibility="visible";
+      content.style.visibility="hidden";
+    }
   }
   // if (resp1.key) {
   //   // const verifyurl = "http://localhost:3000/verifyOtp" ;
@@ -313,15 +318,15 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
         if (resp.key) {
           console.log(" Got true ");
 
-          form.style.visibility="visibile";
-          otpbody.style.visibility="hidden";
-          window.open(LOGIN_URL);
+          otpbox.style.visibility="hidden";
+          content.style.visibility="visible";
+          window.location.href=LOGIN_URL;
         } else {
           console.log(" got false ");
           // window.open(LOGIN_URL);
           // window.location = LOGIN_URL;
-          form.style.visibility="visible";
-          otpbody.style.visibility="hidden";
+          otpbox.style.visibility="hidden";
+          content.style.visibility="visible";
           alert("User already Exist");
           window.open(LOGIN_URL);
         }
@@ -331,7 +336,11 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
     //   console.log(" hi ");
     // }
   } else {
-    alert("Enter correct otp ");
+    eroorMessage.style.visibility="visible";
+    setTimeout(()=>{
+      eroorMessage.style.visibility="hidden";
+
+    } , 2000 ) ; 
   }
 });
 

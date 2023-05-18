@@ -19,6 +19,43 @@ const passclass=password.classList;
 const rickclass=rickshaw.classList;
 const content=document.getElementById("content");  //signup page
 
+const resendOTP = document.getElementById("resendOTP") ; 
+resendOTP.addEventListener("click" , async ()=>{
+  let phoneNo = document.querySelector("#phone").value;
+  // const error = document.querySelector("#error");
+  // const rickshawNo =
+  //   check === true ? document.querySelector("#rickshaw").value : "XYZ";
+  // console.log("$$$$", name, password, email, phoneNo, rickshawNo);
+  // spanotp.value=phoneNo;
+  phoneNo="+91"+phoneNo;
+  // var formstatus=((nameclass.contains("is-valid")) && (emailclass.contains("is-valid")) && (phoneclass.contains("is-valid")) && (passclass.contains("is-valid")) && ((driver.checked && rickclass.contains("is-valid")) || passenger.checked));
+  // if(formstatus){
+  //   console.log("formstatus");
+    
+    
+    const otpurl = "http://localhost:3000/getOtp";
+    // const verifyOtp = "http://localhost:3000/verifyOtp";
+    // const phoneNo = document.querySelector("#phone").value;
+    const data1 = { phoneNo: phoneNo };
+    console.log("phone no is -- "+ phoneNo ) ; 
+    const res1 = await fetch(otpurl, {
+      method: "post",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(data1),
+    });
+    const resp1 = await res1.json();
+    // if (!resp1.key) {
+    //   alert(" Some error occured ");
+    // }
+    // else{
+    //   otpbox.style.visibility="visible";
+    //   content.style.visibility="hidden";
+    // }
+  // }
+})
+
 name1.addEventListener("input",function(){
   const nameregex=/^[a-zA-Z ]*$/;
   if(name1.value.length==0 || !nameregex.test(name1.value)){

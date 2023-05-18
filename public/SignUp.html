@@ -1,80 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
+    <title>SignUp</title>
     <base href="/">
-    <link rel="stylesheet" href="Stylesheets/SignUp.css">
-    <link rel="stylesheet" href="Stylesheets/Navigation.css" type="text/css">
-    <link rel="stylesheet" href="Stylesheets/footer.css" type="text/css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-        crossorigin="anonymous"></script>
-</head>
-
-<body>
-    <script id="replace_with_navbar" src="Javascripts/Navigation.js"></script>
-    <div class="otpbody">
-        <div class="title">Verify OTP</div>
-        <div>
-            <label for="otp">Enter OTP:</label>
-            <input type="number" id="otp">
-        </div>
-        <div class="buttons">
-            <input id="otpverify" value="Verify" type="button">
-            <button id="cancel">Cancel</button>
-        </div>
-    </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     
-    <form class="form1" action="" id="form">
-        <div>
-            <h3 id="error" style="color:red;font-family:'Times New Roman', Times, serif;padding-left:10vw ;"></h3>
-        </div>
-        <div class="inputs">
-            <label for="type" class="labels">Type Of User</label>
-            <input type="radio" class="type" name="type" value="driver" id="driver" checked><label
-                for="driver" class="label">Driver</label>
-            <input type="radio" class="type" name="type" value="passenger" id="passenger"><label
-                for="passenger" class="label">Passenger</label>
-        </div>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="Stylesheets/SignUp.css">
+    
+</head>
+<body>
 
-        <div class="inputs">
-            <label for="name" class="labels">Your Name</label>
-                <input class='field' type="text" name="fullName" id="name">
-        </div>
-        <div class="inputs">
-            <label for="password" class="labels">Your Password</label>
-                <input class='field' type="password" name="password" id="password">
-        </div>
-        <div id="changeable" class="inputs">
-            <label for="email" class="labels">Email</label>
-            <input class='field' type="email" name="email" id="email">
-        </div>
+    <!-- navbar--------------------------- -->
 
-        <div class="inputs">
-            <label for="phone" class="labels">Mobile Number</label>
-                <!-- <input class="field" type="tel" name="phone" id="phone"> -->
-                <input class="field"  name="phone" id="phone">
+    <nav class="navbar navbar-expand-lg " style="background-color: rgb(210, 222, 232);">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand" href="#" ><img src="images/templogo.ico" ></a>
+          <div class="collapse navbar-collapse " id="navbarTogglerDemo03" >
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0" style="padding-right: 2%;">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="SignUp.html">SignUp</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="Login.html">Login</a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="inputs" id="rickshawNo">
-            <label for="rickshaw" class="labels">Rickshaw Number</label>
-                <input class="field" type="text " name="rickshaw" id="rickshaw">
-        </div>
-        <div>
-            <input type="submit" class="register btn btn-lg btn-outline-success" value="Register">
-            <input type="reset" class="reset btn btn-lg btn-outline-danger" value="Reset">
-        </div>
+    </nav>
 
 
-    </form>
-    <script id="replace_with_footer" src="Javascripts/footer.js"></script>
+    <!-- otp box------------------------------------------------- -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+      <symbol id="check-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+      </symbol>
+      <symbol id="info-fill" viewBox="0 0 16 16">
+        <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+      </symbol>
+      <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+        <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+      </symbol>
+    </svg>
+    
+<div class="alert alert-danger d-flex align-items-center custom-alert" role="alert" style="visibility: hidden;z-index:3;height:5vh;width: 60vw;margin-left: 15vw;margin-right: 15vw;margin-top: 2vh;" id="eroorMessage">
+ <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 4vh;"><use xlink:href="#exclamation-triangle-fill"/></svg>
+  <div>
+    Invalid OTP
+  </div>
+</div>
+    <div class="card otp-box" style="width: 22rem;" id="otpbox">
+      <img src="images/otp.png" alt="Otp verification" class="card-img-top">
+      <div class="card-body">
+          <h5 class="card-title text-center">Verify Mobile Number</h5>
+          <p class="card-text text-center">Please enter the OTP we've send to </p>
+          <h6 class="card-text text-center">+91-<span id="spanotp"></span></h6>
+          <div class="mb-3">
+            <label for="otp" class="form-label">Enter OTP : </label>
+            <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP Here">
+            <p class="text-end"><a href="#" class="link-underline-info">Resend OTP</a></p>
+          </div>
+          <button class="btn btn-lg btn-success col-12" id="otpverify">Verify</button>
+      </div>
+  </div>
+
+      <!-- form-------------------------------------- -->
+      
+    <!-- background image-------------- -->
+
+    <img src="images/background.jpg" alt="" id="background-image">
+    
+    
+    <h1 class="h3 mb-3 fw-normal title" ><b>SignUp</b></h1>
+
+    <div class="container signup " id="content">
+        <form class="row g-3" id="form">
+
+
+            <div class="col-md-12 text-center">
+                <label for="name" class="form-label" style="padding-right: 1%;">Type of user : </label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input type" type="radio" name="inlineRadioOptions" id="passenger" value="passenger">
+                    <label class="form-check-label" for="passenger">Passenger</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input type" type="radio" name="inlineRadioOptions" id="driver" value="driver" checked>
+                    <label class="form-check-label" for="driver">Driver</label>
+                  </div>
+            </div>
+
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Your Name / Username</label>
+                    <input type="text" class="form-control is-invalid"   id="name" placeholder="Enter Your Name"  required>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please enter your name.
+                    </div>
+                </div>
+                  
+                <!-- <div class="col-md-4">
+                    <label for="username" class="form-label"> Choose Username</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text" id="inputGroupPrepend3">@</span>
+                      <input type="text" class="form-control is-invalid" id="username" aria-describedby="inputGroupPrepend3 usernameFeedback" required>
+                      <div id="usernameFeedback" class="invalid-feedback">
+                        Please choose a username. 
+                      </div>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                </div> -->
+
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Email id</label>
+                    <input type="email" class="form-control is-invalid" id="email" aria-describedby="emailFeedback" placeholder="Enter Your Email id" required>
+                    <div id="emailFeedback" class="invalid-feedback">
+                      Please provide a valid Email id.
+                    </div>
+                    <div class="valid-feedback">
+                      Looks good!
+                    </div>
+                </div>
+
+                <div class="col-md-4" id="phoneField">
+                    <label for="phone" class="form-label"> Mobile No.</label>
+                    <div class="input-group has-validation">
+                      <span class="input-group-text" id="inputGroupPrepend4">+91</span>
+                      <input type="tel" class="form-control is-invalid" placeholder="Enter Your Mobile no."  id="phone" aria-describedby="inputGroupPrepend4 mobileFeedback" required>
+                      <div id="mobileFeedback" class="invalid-feedback">
+                        Please enter a mobile number
+                      </div>
+                      <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4" id="passwordField">
+                    <label for="password" class="form-label">Choose Password</label>
+                    <input type="password" class="form-control is-invalid" id="password" aria-describedby="passwordFeedback" placeholder="Enter Password" required>
+                    <div id="passwordFeedback" class="invalid-feedback">
+                        Your password must be 8-20 characters long, contain capital and small letter, numbers, and special characters from [@$!#] and must not contain spaces, or emoji.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+
+                <div class="col-md-4 " id="rickshawField">
+                    <label for="rickshaw" class="form-label">Rickshaw No.</label>
+                    <input type="text" class="form-control is-invalid" id="rickshaw" aria-describedby="rickshawFeedback1 rickshawFeedback2"  placeholder="Enter Your Rickshaw no.">
+                    <div class="valid-feedback" id="rickshawFeedback1" >
+                      Looks good!
+                    </div>
+                    <div id="rickshawFeedback2" class="invalid-feedback">
+                        Please Enter valid rickshaw number.
+                    </div>
+                </div>
+                  
+                  <div class="col-12 text-center">
+                    <button class="btn btn-lg btn-success col-lg-3" type="submit">SignUp</button>
+                    <button class="btn btn-lg btn-danger col-lg-3" type="reset">Reset</button>
+                  </div>
+           
+          </form>
+    </div>
+      
+   
+    <p class="mt-5 mb-3 text-body-secondary" align="center">&copy; Quick Rickshaw 2023</p>
+      
     <script src="Javascripts/SignUp.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
-
 </html>

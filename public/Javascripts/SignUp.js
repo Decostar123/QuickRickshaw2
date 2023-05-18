@@ -2,18 +2,154 @@ const Driver_Signup = "http://localhost:3000/driver/signup";
 const User_Signup = "http://localhost:3000/user/signup";
 // const Driver_Signup = "https://quickrickshaws.onrender.com/driver/signup";
 // const User_Signup = "https://quickrickshaws.onrender.com/user/signup";
+const name1 = document.querySelector("#name");
+const email1 = document.querySelector("#email");
+const phone = document.querySelector("#phone");
+const password = document.querySelector("#password");
+const rickshaw=document.querySelector("#rickshaw");
+const driver = document.getElementById("driver");
+const otpbox= document.getElementById("otpbox");
+const spanotp=document.getElementById("spanotp");
+const eroorMessage=document.getElementById("eroorMessage");
+
+const nameclass=name1.classList;
+const emailclass=email1.classList;
+const phoneclass=phone.classList;
+const passclass=password.classList;
+const rickclass=rickshaw.classList;
+const content=document.getElementById("content");  //signup page
+
+name1.addEventListener("input",function(){
+  const nameregex=/^[a-zA-Z ]*$/;
+  if(name1.value.length==0 || !nameregex.test(name1.value)){
+    if(!nameclass.contains("is-invalid")){
+      nameclass.add("is-invalid");
+    }
+    if(nameclass.contains("is-valid")){
+      nameclass.remove("is-valid");
+    }
+    
+  }
+  else{
+    if(!nameclass.contains("is-valid")){
+      nameclass.add("is-valid");
+    }
+    if(nameclass.contains("is-invalid")){
+      nameclass.remove("is-invalid");
+    }
+  }
+});
+
+email1.addEventListener("input",function(){
+  const emailreg=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
+  if(!emailreg.test(email1.value)){
+    if(!emailclass.contains("is-invalid")){
+      emailclass.add("is-invalid");
+    }
+    if(emailclass.contains("is-valid")){
+      emailclass.remove("is-valid");
+    }
+    
+  }
+  else{
+    if(!emailclass.contains("is-valid")){
+      emailclass.add("is-valid");
+    }
+    if(emailclass.contains("is-invalid")){
+      emailclass.remove("is-invalid");
+    }
+  }
+});
+
+phone.addEventListener("input",function(){
+  const phoneregex=/^[6-9]\d{9}$/;
+  
+  if(!phoneregex.test(phone.value)){
+    if(!phoneclass.contains("is-invalid")){
+      phoneclass.add("is-invalid");
+    }
+    if(phoneclass.contains("is-valid")){
+      phoneclass.remove("is-valid");
+    }
+    
+  }
+  else{
+    if(!phoneclass.contains("is-valid")){
+      phoneclass.add("is-valid");
+    }
+    if(phoneclass.contains("is-invalid")){
+      phoneclass.remove("is-invalid");
+    }
+  }
+});
+
+password.addEventListener("input",function(){
+  const passregex=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!#])[A-Za-z\d@$!]{8,20}$/;
+  
+  if(!passregex.test(password.value)){
+    if(!passclass.contains("is-invalid")){
+      passclass.add("is-invalid");
+    }
+    if(passclass.contains("is-valid")){
+      passclass.remove("is-valid");
+    }
+    
+  }
+  else{
+    if(!passclass.contains("is-valid")){
+      passclass.add("is-valid");
+    }
+    if(passclass.contains("is-invalid")){
+      passclass.remove("is-invalid");
+    }
+  }
+});
+
+rickshaw.addEventListener("input",function(){
+  const rickregex=/^[A-Z]{2}-\d{2}-[A-Z]{2}-\d{1,4}$/;
+  
+  if(!rickregex.test(rickshaw.value)){
+    if(!rickclass.contains("is-invalid")){
+      rickclass.add("is-invalid");
+    }
+    if(rickclass.contains("is-valid")){
+      rickclass.remove("is-valid");
+    }
+    
+  }
+  else{
+    if(!rickclass.contains("is-valid")){
+      rickclass.add("is-valid");
+    }
+    if(rickclass.contains("is-invalid")){
+      rickclass.remove("is-invalid");
+    }
+  }
+});
+
+
+
 const passenger = document.getElementById("passenger");
 passenger.addEventListener("click", function () {
-  const rickshaw = document.querySelector("#rickshawNo");
-  rickshaw.style.display = "none";
-  console.log(passenger.checked);
-  console.log(driver.checked);
+  const rickshawField = document.querySelector("#rickshawField");
+  const phoneField=document.getElementById("phoneField");
+  const passwordField=document.getElementById("passwordField");
+  phoneField.className="col-md-6";
+  passwordField.className="col-md-6";
+  rickshawField.style.display = "none";
+
 });
-const driver = document.getElementById("driver");
+
 // const passenger = document.getElementById("passenger");
 driver.addEventListener("click", function () {
-  const rickshaw = document.querySelector("#rickshawNo");
-  rickshaw.style.display = "block";
+  const rickshawField = document.querySelector("#rickshawField");
+  const phoneField=document.getElementById("phoneField");
+  const passwordField=document.getElementById("passwordField");
+  
+  phoneField.className="col-md-4";
+  passwordField.className="col-md-4";
+  rickshawField.style.display = "block";
 });
 // const check = driver.checked;
 // console.log(" CHECHKED", check);
@@ -27,67 +163,38 @@ form.addEventListener("submit", async (e) => {
   const name = document.querySelector("#name").value;
   const password = document.querySelector("#password").value;
   const email = document.querySelector("#email").value;
-  const phoneNo = document.querySelector("#phone").value;
+  let phoneNo = document.querySelector("#phone").value;
   const error = document.querySelector("#error");
   const rickshawNo =
     check === true ? document.querySelector("#rickshaw").value : "XYZ";
   console.log("$$$$", name, password, email, phoneNo, rickshawNo);
-
-    //Data Validation
+  spanotp.value=phoneNo;
+  phoneNo="+91"+phoneNo;
+  var formstatus=((nameclass.contains("is-valid")) && (emailclass.contains("is-valid")) && (phoneclass.contains("is-valid")) && (passclass.contains("is-valid")) && ((driver.checked && rickclass.contains("is-valid")) || passenger.checked));
+  if(formstatus){
+    console.log("formstatus");
     
-    const nameregex=/^[a-zA-Z]*$/;
-    const emailreg=/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const mobilereg=/^\+91[1-9][0-9]{9}$/;
-    const passreg=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    const rickshawreg=/^[A-Z]{2}[0-9]{2}[A-Z]{0,3}[1-9][0-9]{0,3}$/
-    const passspec="password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character"
-    if(name.length==0){
-      error.innerHTML="Name is Reqired field.";
-      return;
+    
+    const otpurl = "http://localhost:3000/getOtp";
+    const verifyOtp = "http://localhost:3000/verifyOtp";
+    // const phoneNo = document.querySelector("#phone").value;
+    const data1 = { phoneNo: phoneNo };
+    console.log("phone no is -- "+ phoneNo ) ; 
+    const res1 = await fetch(otpurl, {
+      method: "post",
+      headers: {
+        "Content-Type": "Application/json",
+      },
+      body: JSON.stringify(data1),
+    });
+    const resp1 = await res1.json();
+    if (!resp1.key) {
+      alert(" Some error occured ");
     }
-    else if(!nameregex.test(name)){
-      error.innerHTML="Please enter valid name.";
-      return;
+    else{
+      otpbox.style.visibility="visible";
+      content.style.visibility="hidden";
     }
-    else if(!emailreg.test(email)){
-
-      error.innerHTML="Please enter valid email address.";
-      return;
-    }
-    else if(!mobilereg.test(phoneNo)){
-      error.innerHTML="Please enter valid mobile number.";
-      return;  
-    }
-    else if(!passreg.test(password)){
-      error.innerHTML="Please enter valid password.";
-      error.innerHTML=error.innerHTML+"<br><p style='font-size:3vh;'>"+passspec+"</p>";
-     return;
-    }
-    else if(check && !rickshawreg.test(rickshawNo)){
-      error.innerHTML="Please enter valid rickshaw number.";
-     
-      return;
-    }
-  //Data Validation--------------------------------------
-  const otpurl = "http://localhost:3000/getOtp";
-  const verifyOtp = "http://localhost:3000/verifyOtp";
-  // const phoneNo = document.querySelector("#phone").value;
-  const data1 = { phoneNo: phoneNo };
-  console.log("phone no is -- "+ phoneNo ) ; 
-  const res1 = await fetch(otpurl, {
-    method: "post",
-    headers: {
-      "Content-Type": "Application/json",
-    },
-    body: JSON.stringify(data1),
-  });
-  const resp1 = await res1.json();
-  if (!resp1.key) {
-    alert(" Some error occured ");
-  }
-  else{
-    form.style.visibility="hidden";
-    otpbody.style.visibility="visible";
   }
   // if (resp1.key) {
   //   // const verifyurl = "http://localhost:3000/verifyOtp" ;
@@ -211,15 +318,15 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
         if (resp.key) {
           console.log(" Got true ");
 
-          form.style.visibility="visibile";
-          otpbody.style.visibility="hidden";
-          window.open(LOGIN_URL);
+          otpbox.style.visibility="hidden";
+          content.style.visibility="visible";
+          window.location.href=LOGIN_URL;
         } else {
           console.log(" got false ");
           // window.open(LOGIN_URL);
           // window.location = LOGIN_URL;
-          form.style.visibility="visible";
-          otpbody.style.visibility="hidden";
+          otpbox.style.visibility="hidden";
+          content.style.visibility="visible";
           alert("User already Exist");
           window.open(LOGIN_URL);
         }
@@ -229,7 +336,11 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
     //   console.log(" hi ");
     // }
   } else {
-    alert("Enter correct otp ");
+    eroorMessage.style.visibility="visible";
+    setTimeout(()=>{
+      eroorMessage.style.visibility="hidden";
+
+    } , 2000 ) ; 
   }
 });
 

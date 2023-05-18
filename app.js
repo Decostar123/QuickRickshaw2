@@ -21,9 +21,13 @@ mongoose
 // const verifySid = "VAf2a22fc41ace06f1d255e250ff25e512";
 // const client = require("twilio")(accountSid, authToken);
 
+// const accountSid = "AC6311c17ca87cf589def81f6e2d98b7c5";
+// const authToken = "3e17ba4da88f28a679fecc1196e2f850";
+// const verifySid = "VAf2a22fc41ace06f1d255e250ff25e512";
+
 const accountSid = "AC6311c17ca87cf589def81f6e2d98b7c5";
-const authToken = "3e17ba4da88f28a679fecc1196e2f850";
-const verifySid = "VAf2a22fc41ace06f1d255e250ff25e512";
+const authToken = "58565b656a13c3e2c1aeb035bee7b93d";
+const verifySid = "VA84c22cc0a20f20e88b0e6301fa29dbdc";
 const client = require("twilio")(accountSid, authToken);
 
 const jwt = require("jsonwebtoken");

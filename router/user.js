@@ -23,14 +23,16 @@ router.get("/dDashBoard", async (req, res) => {
   pname = data.info.pname;
   ppassword = data.info.ppassword;
 
-  const entry = await User.findOne({ name: pname, password: ppassword });
+  // const entry = await User.findOne({ name: pname, password: ppassword });
   // const IPAddress = "157.32.4.237";
   const IPAddress = req.ip ;
   const url = "http://ip-api.com/json/" + IPAddress;
   const resp = await fetch(url);
   const location = await resp.json();
-  entry.longitude = location.lon;
-  entry.latitude = location.lat;
+  const ppp = await User.updateOne({ name: pname, password: ppassword } , 
+    {longitude : location.lon , latitude : location.lat })
+  // entry.longitude = location.lon;
+  // entry.latitude = location.lat;
   longitude = location.lon;
   latitude = location.lat;
   console.log("(((", entry);
@@ -90,8 +92,10 @@ router.post("/login", async (req, res) => {
     const url = "http://ip-api.com/json/" + IPAddress;
     const resp = await fetch(url);
     const location = await resp.json();
-    data.longitude = location.lon;
-    data.latitude = location.lat;
+    const ppp = await User.updateOne({ name: pname, password: ppassword } , 
+      {longitude : location.lon , latitude : location.lat })
+    // data.longitude = location.lon;
+    // data.latitude = location.lat;
     longitude = location.lon;
     latitude = location.lat;
     // console.log(data);

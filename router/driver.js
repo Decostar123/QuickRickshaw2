@@ -73,14 +73,16 @@ router.get("/dDashBoard", async (req, res) => {
   dpassword = data.info.dpassword;
   console.log("dname", dname, "dpaasword", dpassword);
 
-  const entry = await Driver.findOne({ name: dname, password: dpassword });
+  // const entry = await Driver.findOne({ name: dname, password: dpassword });
   // const IPAddress = "157.32.4.237";
   const IPAddress = req.ip ;
   const url = "http://ip-api.com/json/" + IPAddress;
   const resp = await fetch(url);
   const location = await resp.json()    ;
-  entry.longitude = location.lon;
-  entry.latitude = location.lat;
+  // entry.longitude = location.lon;
+  // entry.latitude = location.lat;
+  const ppp = await Driver.updateOne({ name: dname, password: dpassword } , 
+    {longitude : location.lon , latitude : location.lat }) ; 
   longitude = location.lon;
   latitude = location.lat;
   console.log("(((", entry);
@@ -116,8 +118,10 @@ router.post("/login", async (req, res) => {
     const url = "http://ip-api.com/json/" + IPAddress;
     const resp = await fetch(url);
     const location = await resp.json();
-    data.longitude = location.lon;
-    data.latitude = location.lat;
+    const ppp = await Driver.updateOne({ name: dname, password: dpassword } , 
+      {longitude : location.lon , latitude : location.lat })
+    // data.longitude = location.lon;
+    // data.latitude = location.lat;
     console.log(data);
     longitude = location.lon;
     latitude = location.lat;

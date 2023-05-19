@@ -180,7 +180,9 @@ router.get("/DAvailable", async (req, res) => {
   console.log("available", data);
   if (data) {
     data.markAsAvailable = 1 ;
+  
     data.save() ; 
+    console.log( "--> " , data ) ; 
     res.json({ key: true });
   } else {
     res.json({ key: false });
@@ -192,6 +194,7 @@ router.get("/DNotAvailable", async (req, res) => {
   console.log("available", data);
   if (data) {
     data.markAsAvailable = 0 ;
+    console.log( "--> " , data ) ; 
     data.save() ; 
     res.json({ key: true });
   } else {

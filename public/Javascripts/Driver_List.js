@@ -26,7 +26,7 @@ logOut.addEventListener('click' , async () =>{
 const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
 
 
-document.addEventListener("DOMContentLoaded", async () => {
+body.addEventListener("load", async () => {
   // console.log("Hello World!");
   const table = document.querySelector("#tables").getElementsByTagName('tbody')[0];
 

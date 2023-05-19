@@ -10,7 +10,7 @@ const PASSENGER_URL = "http://localhost:3000/driver/passengerList";
 const DAvailable_URL = "http://localhost:3000/driver/DAvailable";
 const DNotAvailable_URL = "http://localhost:3000/driver/DNotAvailable";
 const DIPAddress = "http://localhost:3000/driver/DIPAddress";
-const LOGOUT_URL = "http://localhost:3000/logout";
+const LOGOUT_URL = "http://localhost:3000/logout" ;
 const logOut = document.querySelector("#logOut") ; 
 
 // const send = document.querySelector("#send") ;

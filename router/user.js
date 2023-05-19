@@ -1,4 +1,6 @@
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
+const fetch = require('node-fetch');
+
 const router = require("express").Router();
 // const driverList = require("../Driverdata");
 const { v4: uuidv4 } = require("uuid");

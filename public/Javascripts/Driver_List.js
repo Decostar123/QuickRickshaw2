@@ -38,7 +38,7 @@ const temp = document.querySelector("#tables") ;
     console.log( data.result)
     alert(arr) ; 
   const table = document.querySelector("#tables").getElementsByTagName('tbody')[0];
-   for (entry of passengers) {
+   for (entry of arr ) {
           var row = table.insertRow();
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);

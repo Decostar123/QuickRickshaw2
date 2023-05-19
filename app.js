@@ -68,6 +68,7 @@ app.get("/", async (req, res) => {
 
   const token1 = req.cookies.USER_JWT_KEY;
   const token2 = req.cookies.DRIVER_JWT_KEY;
+  console.log( token1 , "tokens////" , token2 ) ; 
   if (token1) {
     const data = await jwt.verify(token1, process.env.USER_JWT_KEY);
     if (data) {
@@ -109,6 +110,7 @@ app.get("/", async (req, res) => {
       res.sendFile(__dirname + "/public/Login.html");
     }
   } else {
+
     res.sendFile(__dirname + "/public/Login.html");
   }
 });
@@ -165,9 +167,17 @@ app.post("/verifyOtp", async (req, res) => {
   //   .then((verification) => console.log(verification.status));
 });
 app.get("/logout"  , ( req , res )=>{
-  res.clearCookie(process.env.DRIVER_JWT_KEY) ; 
-  res.clearCookie(process.env.USER_JWT_KEY) ; 
-  res.redirect("/") ; 
+  res.clearCookie('DRIVER_JWT_KEY') ; 
+  res.clearCookie('USER_JWT_KEY') ;
+
+  // res.redirect("/") ;
+  const token1 = req.cookies.USER_JWT_KEY;
+  const token2 = req.cookies.DRIVER_JWT_KEY;
+  console.log( token1 , "tokens-----" , token2 ) ;
+  // console.log( req.cookies.DRIVER_JWT_KEY ) ; 
+  // console.log( req.cookies.USER_JWT_KEY ) ; 
+  // res.redirect("/") ;
+  res.json({"key" : true }) ;  
 })
 // app.post("/driver/signup", async (req, res) => {
 //   console.log(" Inside signup $$$$$$$$$$$$$$$$$$$$$$$$ ");
@@ -238,7 +248,8 @@ async function verificationDriver(req, res, next) {
   console.log("9999999", array[array.length - 1]);
   if (
     array[array.length - 1] === "login" ||
-    array[array.length - 1] === "signup"
+    array[array.length - 1] === "signup" || 
+    array[array.length - 1] === "driverExist"
   ) {
     console.log("direct acess via signu[p");
     next();
@@ -268,7 +279,8 @@ async function verificationUser(req, res, next) {
   console.log("9999999", array[array.length - 1]);
   if (
     array[array.length - 1] === "login" ||
-    array[array.length - 1] === "signup"
+    array[array.length - 1] === "signup" || 
+    array[array.length - 1] === "userExist"
   ) {
     console.log("diet signing up her ");
     next();

@@ -9,7 +9,21 @@ const PNotAvailable_URL = "http://localhost:3000/user/PNotAvailable";
 // const PASSENGER_URL = "https://quickrickshaws.onrender.com/user/driverList";
 // const DAvailable_URL = "https://quickrickshaws.onrender.com/user/PAvailable";
 // const PNotAvailable_URL = "https://quickrickshaws.onrender.com/user/PNotAvailable";
-
+const LOGOUT_URL = "http://localhost:3000/logout";
+const logOut = document.querySelector("#logOut") ; 
+logOut.addEventListener('click' , async () =>{
+  console.log("aaaa") ; 
+  const ans = confirm("Are you sure to LOG OUT ?") ; 
+  if( ans )
+  {
+    const res = await fetch(LOGOUT_URL) ; 
+   const data = res.json() ; 
+   console.log( data.key ) ;
+  }else{
+    
+  }
+    
+})
 driverList.addEventListener("click", () => {
   window.open(PASSENGER_URL);
 });

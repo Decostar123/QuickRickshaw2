@@ -119,6 +119,20 @@ router.post("/login", async (req, res) => {
 //   });
 //   res.json(result);
 // });
+
+router.post("/userExist" , async (req, res) =>{
+  const email = req.body.email;
+  console.log("email --  > " , email ) ; 
+  const data = await User.findOne({ email }); 
+  console.log("---> " , data ) ; 
+  if( data )
+  {
+    console.log(" I got the dsta ")
+    res.json({key : true }) ; 
+  }else{
+    res.json({key: false }) ; 
+  }
+})
 router.get("/driverList", (req, res) => {
   const temp = path.resolve(__dirname, "..");
   console.log(temp);
@@ -156,7 +170,7 @@ router.post("/signup", async (req, res) => {
 
   //   //   console.log(email, password);
   //   //   console.log(req.body);
-  const data = await User.findOne({ email, password });
+  const data = await User.findOne({ email  });
   if (!data) {
     // const info = { email: email, password: password };
     // const token = await jwt.sign({ info }, process.env.JWT_KEY, {

@@ -8,9 +8,9 @@ const router = require("express").Router();
 
 // const userList = require("../UserData");
 const { v4: uuidv4 } = require("uuid");
-router.get("/", (req, res) => {
-  res.send("hi");
-});
+// router.get("/", (req, res) => {
+//   res.send("hi");
+// });
 let dname = "";
 let dpassword = "";
 let latitude = 0;
@@ -188,6 +188,19 @@ router.get("/DNotAvailable", async (req, res) => {
     res.json({ key: false });
   }
 });
+router.post("/driverExist" , async (req, res) =>{
+  const email = req.body.email;
+  console.log("email --  > " , email ) ; 
+  const data = await Driver.findOne({ email }); 
+  console.log("---> " , data ) ; 
+  if( data )
+  {
+    console.log(" I got the dsta ")
+    res.json({key : true }) ; 
+  }else{
+    res.json({key: false }) ; 
+  }
+})
 
 router.post("/signup", async (req, res) => {
   console.log(" Inside signup $$$$$$$$$$$$$$$$$$$$$$$$ ");
@@ -207,7 +220,7 @@ router.post("/signup", async (req, res) => {
 
   //   //   console.log(email, password);
   //   //   console.log(req.body);
-  const data = await Driver.findOne({ email, password });
+  const data = await Driver.findOne({ email });
   if (!data) {
     // const info = { email: email, password: password };
     // const token = await jwt.sign({ info }, process.env.JWT_KEY, {

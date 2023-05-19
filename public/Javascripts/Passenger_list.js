@@ -7,7 +7,21 @@
 //   },
 // ];
 const PASSENGER_LIST = "http://localhost:3000/driver/passengers";
-
+const LOGOUT_URL = "http://localhost:3000/logout";
+const logOut = document.querySelector("#logOut") ; 
+logOut.addEventListener('click' , async () =>{
+  console.log("aaaa") ; 
+  const ans = confirm("Are you sure to LOG OUT ?") ; 
+  if( ans )
+  {
+    const res = await fetch(LOGOUT_URL) ; 
+   const data = res.json() ; 
+   console.log( data.key ) ;
+  }else{
+    
+  }
+    
+})
 window.onload = async () => {
   const table = document.querySelector("#table");
   console.log(table.innerHTML, "44444");

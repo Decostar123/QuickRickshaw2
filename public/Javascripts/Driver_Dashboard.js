@@ -10,6 +10,21 @@ const PASSENGER_URL = "http://localhost:3000/driver/passengerList";
 const DAvailable_URL = "http://localhost:3000/driver/DAvailable";
 const DNotAvailable_URL = "http://localhost:3000/driver/DNotAvailable";
 const DIPAddress = "http://localhost:3000/driver/DIPAddress";
+const LOGOUT_URL = "http://localhost:3000/logout";
+const logOut = document.querySelector("#logOut") ; 
+logOut.addEventListener('click' , async () =>{
+  console.log("aaaa") ; 
+  const ans = confirm("Are you sure to LOG OUT ?") ; 
+  if( ans )
+  {
+    const res = await fetch(LOGOUT_URL) ; 
+   const data = res.json() ; 
+   console.log( data.key ) ;
+  }else{
+    
+  }
+    
+})
 // const PASSENGER_URL =
 //   "https://quickrickshaws.onrender.com/driver/passengerList";
 // const DAvailable_URL = "https://quickrickshaws.onrender.com/driver/DAvailable";

@@ -6,7 +6,21 @@
 //     phoneNo: "789",
 //   },
 // ];
-
+const LOGOUT_URL = "http://localhost:3000/logout";
+const logOut = document.querySelector("#logOut") ; 
+logOut.addEventListener('click' , async () =>{
+  console.log("aaaa") ; 
+  const ans = confirm("Are you sure to LOG OUT ?") ; 
+  if( ans )
+  {
+    const res = await fetch(LOGOUT_URL) ; 
+   const data = res.json() ; 
+   console.log( data.key ) ;
+  }else{
+    
+  }
+    
+})
 const PASSENGER_LIST = "http://localhost:3000/user/drivers";
 
 window.onload = async () => {

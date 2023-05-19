@@ -27,8 +27,24 @@ const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
 
 // const body = document.getElementsByTagName("body")[0];
 const temp = document.querySelector("#tables") ; 
-function message(){
+async function message(){
   alert(" message shoeinf ") ; 
+  const table = document.querySelector("#tables").getElementsByTagName('tbody')[0];
+  const resp = await fetch(PASSENGER_LIST);
+    const data = await resp.json();
+    const passengers = data.result;
+    for (entry of passengers) {
+          var row = table.insertRow();
+          var cell1 = row.insertCell(0);
+          var cell2 = row.insertCell(1);
+          // const data = `<tr><td>${entry.name}</td><td>${entry.phoneNo}</td>
+          // <td>${entry.name}</td><td>${entry.name}</td></tr>`;
+          // table.innerHTML += data;
+          cell1.innerHTML = entry.name;
+          cell2.innerHTML = entry.phoneNo;
+        }
+        console.log(passengers);
+
 }
 // temp.addEventListener("load",  () => {
 //   // console.log("Hello World!");

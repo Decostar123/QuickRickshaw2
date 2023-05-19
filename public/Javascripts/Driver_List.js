@@ -50,11 +50,11 @@ body.addEventListener("load", async () => {
   // }
   // console.log(passengers);
 
-  console.log(  " the body has laoded ") ; 
+  alert(  " the body has laoded ") ; 
 
 
   // alert("will start fetching ") ;
-});
+} , false );
 // window.addEventListener("load" , async (event ) => {
 //   const table = document.querySelector("#table");
 //   // console.log(table.innerHTML, "44444");

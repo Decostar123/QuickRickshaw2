@@ -10,7 +10,10 @@ const rickshaw=document.querySelector("#rickshaw");
 const driver = document.getElementById("driver");
 const otpbox= document.getElementById("otpbox");
 const spanotp=document.getElementById("spanotp");
-const eroorMessage=document.getElementById("eroorMessage");
+const errorMessage=document.getElementById("errorMessage");
+const title1=document.getElementById("title1");
+const error1=document.getElementById("error1");
+const success=document.getElementById("success");
 
 const nameclass=name1.classList;
 const emailclass=email1.classList;
@@ -205,7 +208,7 @@ form.addEventListener("submit", async (e) => {
   const rickshawNo =
     check === true ? document.querySelector("#rickshaw").value : "XYZ";
   console.log("$$$$", name, password, email, phoneNo, rickshawNo);
-  spanotp.value=phoneNo;
+  spanotp.innerHTML=phoneNo;
   phoneNo="+91"+phoneNo;
   var formstatus=((nameclass.contains("is-valid")) && (emailclass.contains("is-valid")) && (phoneclass.contains("is-valid")) && (passclass.contains("is-valid")) && ((driver.checked && rickclass.contains("is-valid")) || passenger.checked));
   if(formstatus){
@@ -226,11 +229,21 @@ form.addEventListener("submit", async (e) => {
     });
     const resp1 = await res1.json();
     if (!resp1.key) {
-      alert(" Some error occured ");
+      error1.innerHTML="Some error occured in otp generation.";
+      errorMessage.style.visibility="visible";
+      setTimeout(()=>{
+        errorMessage.style.visibility="hidden";
+      } , 2000 ) ;
     }
     else{
+      success.innerHTML="OTP Sended Successfully.";
+      success.style.visibility="visible";
+      setTimeout(()=>{
+        success.style.visibility="hidden";
+      } , 2000 ) ;
       otpbox.style.visibility="visible";
       content.style.visibility="hidden";
+      title1.style.visibility="hidden";
     }
   }
   // if (resp1.key) {
@@ -354,8 +367,13 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
 
         if (resp.key) {
           console.log(" Got true ");
-
+          success.innerHTML="Registered Successfully.";
+          success.style.visibility="visible";
+          setTimeout(()=>{
+            success.style.visibility="hidden";
+          } , 2000 ) ;
           otpbox.style.visibility="hidden";
+          title1.style.visibility="visible";
           content.style.visibility="visible";
           window.location.href=LOGIN_URL;
         } else {
@@ -363,8 +381,13 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
           // window.open(LOGIN_URL);
           // window.location = LOGIN_URL;
           otpbox.style.visibility="hidden";
+          title1.style.visibility="visible";
           content.style.visibility="visible";
-          alert("User already Exist");
+          error1.innerHTML="User already Exist";
+          errorMessage.visibility="visible";
+          setTimeout(()=>{
+             eroorMessage.style.visibility="hidden";
+          } , 2000 ) ;
           window.open(LOGIN_URL);
         }
         return "ahhh";
@@ -373,9 +396,10 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
     //   console.log(" hi ");
     // }
   } else {
-    eroorMessage.style.visibility="visible";
+    error1.innerHTML="invalid OTP";
+    errorMessage.style.visibility="visible";
     setTimeout(()=>{
-      eroorMessage.style.visibility="hidden";
+      errorMessage.style.visibility="hidden";
 
     } , 2000 ) ; 
   }

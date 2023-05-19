@@ -1,5 +1,5 @@
 console.log(" passenger dashboard ");
-const passengerList = document.querySelector("#passengerList");
+const driverList = document.querySelector("#driverList");
 const DAvailable = document.querySelector("#DAvailable");
 const DNotAvailable = document.querySelector("#DNotAvailable");
 
@@ -10,7 +10,7 @@ const PNotAvailable_URL = "http://localhost:3000/user/PNotAvailable";
 // const DAvailable_URL = "https://quickrickshaws.onrender.com/user/PAvailable";
 // const PNotAvailable_URL = "https://quickrickshaws.onrender.com/user/PNotAvailable";
 
-passengerList.addEventListener("click", () => {
+driverList.addEventListener("click", () => {
   window.open(PASSENGER_URL);
 });
 DAvailable.addEventListener("click", () => {
@@ -20,9 +20,18 @@ DAvailable.addEventListener("click", () => {
       alert("marked Available ");
       console.log(data);
       if (data.key) {
-        alert("marked available");
+        success.innerHTML="Marked Successfully.";
+        success.style.visibility="visible";
+        setTimeout(()=>{
+          success.style.visibility="hidden";
+        } , 2000 ) ;
       } else {
-        alert(" some error occured ! try latr ");
+        errorMessage.innerHTML="some error occured!! Try again later";
+        error.style.visibility="visible";
+        setTimeout(()=>{
+          error.style.visibility="hidden";
+    
+        } , 2000 ) ; 
       }
     });
 });
@@ -34,9 +43,18 @@ DNotAvailable.addEventListener("click", () => {
       //   alert("marked not Available ");
       console.log(data);
       if (data.key) {
-        alert("marked not available");
+        success.innerHTML="Removed Successfully.";
+        success.style.visibility="visible";
+        setTimeout(()=>{
+          success.style.visibility="hidden";
+        } , 2000 ) ;
       } else {
-        alert(" some error occured ! try latr ");
+        errorMessage.innerHTML="some error occured!! Try again later";
+        error.style.visibility="visible";
+        setTimeout(()=>{
+          error.style.visibility="hidden";
+    
+        } , 2000 ) ; 
       }
     });
 });

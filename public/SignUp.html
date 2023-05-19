@@ -49,12 +49,15 @@
       </symbol>
     </svg>
     
-<div class="alert alert-danger d-flex align-items-center custom-alert" role="alert" style="visibility: hidden;z-index:3;height:5vh;width: 60vw;margin-left: 15vw;margin-right: 15vw;margin-top: 2vh;" id="eroorMessage">
+<div class="alert alert-danger d-flex align-items-center custom-alert" role="alert" style="visibility: hidden;z-index:3;height:6vh;margin-top: 5vh;" id="errorMessage">
  <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 4vh;"><use xlink:href="#exclamation-triangle-fill"/></svg>
-  <div>
-    Invalid OTP
+  <div id="error1">
   </div>
 </div>
+
+<div class="alert alert-success" role="alert" style="visibility: hidden;z-index:4;height:8vh;margin-top: 5vh;" id="success">
+</div>
+
     <div class="card otp-box" style="width: 22rem;" id="otpbox">
       <img src="images/otp.png" alt="Otp verification" class="card-img-top">
       <div class="card-body">
@@ -64,7 +67,7 @@
           <div class="mb-3">
             <label for="otp" class="form-label">Enter OTP : </label>
             <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP Here">
-            <p class="text-end"><a href="#" class="link-underline-info">Resend OTP</a></p>
+            <p class="text-end"><a href="#" class="link-underline-info" id="resendOTP">Resend OTP</a></p>
           </div>
           <button class="btn btn-lg btn-success col-12" id="otpverify">Verify</button>
       </div>
@@ -77,7 +80,7 @@
     <img src="images/background.jpg" alt="" id="background-image">
     
     
-    <h1 class="h3 mb-3 fw-normal title" ><b>SignUp</b></h1>
+    <h1 class="h3 mb-3 fw-normal title" id="title1"><b>SignUp</b></h1>
 
     <div class="container signup " id="content">
         <form class="row g-3" id="form">

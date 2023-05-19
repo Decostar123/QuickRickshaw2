@@ -1,13 +1,12 @@
 console.log(" this is the login js ");
 const driverLogin = document.querySelector("#driverLogin");
 const userLogin = document.querySelector("#userLogin");
-const aler=document.getElementsByClassName("custom-alert")[0];
+const errorMessage=document.getElementById("errorMessage");
+const error=document.getElementById("error");
 
-const pop=document.getElementById("popup");
 
-function closepopup(){
-  pop.classList.remove("openpopup");
-}
+
+
 // driverLogin.onClick = (e) => {
 //   alert(" got clicked ");
 // };
@@ -39,17 +38,25 @@ driverLogin.addEventListener("click", () => {
         console.log(data);
         console.log("client", DASHBOARD_URL);
         if (data.key) {
-          console.log(" shwinf the dashboard ");
-          aler.style.visibility="hidden";
+          console.log(" switch the dashboard ");
+          success.innerHTML="Loged In Successfully.";
+          success.style.visibility="visible";
+          setTimeout(()=>{
+            success.style.visibility="hidden";
+          } , 2000 ) ; 
           window.location.href = DASHBOARD_URL;
         } else {
           
-          aler.style.visibility="visible";
-
+          errorMessage.innerHTML="Invalid Usename or Password";
+          error.style.visibility="visible";
+          setTimeout(()=>{
+            error.style.visibility="hidden";
+      
+          } , 2000 ) ; 
         }
       });
   } else {
-    alert(" Please allowo loaction ");
+    alert("Please allow loaction.");
   }
 
   //   alert(" got clicked ");
@@ -80,17 +87,26 @@ userLogin.addEventListener("click", () => {
         console.log(data);
         console.log("client", DASHBOARD_URL);
         if (data.key) {
-          console.log(" shwinf the dashboard ");
-          aler.style.visibility="hidden";
+          console.log(" switch the dashboard ");
+          success.innerHTML="Loged In Successfully.";
+          success.style.visibility="visible";
+          setTimeout(()=>{
+            success.style.visibility="hidden";
+          } , 2000 ) ; 
           window.location.href = DASHBOARD_URL;
         } else {
-          aler.style.visibility="visible";
+          errorMessage.innerHTML="Invalid Usename or Password";
+          error.style.visibility="visible";
+          setTimeout(()=>{
+            error.style.visibility="hidden";
+      
+          } , 2000 ) ; 
         }
       }).catch(e=>{
         alert("Some error occur.");
       });
   } else {
-    alert("allow location acess !!!! ");
+    alert("allow location access !!!! ");
   }
 
   //   alert(" got clicked ");

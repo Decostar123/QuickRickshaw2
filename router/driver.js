@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
   res.json({ key: "Welcome driver" });
   // res.render("driverDsdhboard")
 });
-let id = "02ddf53a-10b2-4c9b-94e7-3eea93c13594";
+let id = "";
 const Driver = require("../model/Driver");
 const User = require("../model/User");
 router.get("/login", (req, res) => {
@@ -50,7 +50,10 @@ router.get("/DIPAddress", async (req, res) => {
   const location = await resp.json();
   entry.latitude = location.lat;
   entry.longitude = location.lon;
-
+  
+  latitude = location.lat;
+  longitude = location.lon;
+  
   console.log(location);
 
   const temp = path.resolve(__dirname, "..");
@@ -68,7 +71,8 @@ router.get("/dDashBoard", async (req, res) => {
   console.log("dname", dname, "dpaasword", dpassword);
 
   const entry = await Driver.findOne({ name: dname, password: dpassword });
-  const IPAddress = "157.32.4.237";
+  // const IPAddress = "157.32.4.237";
+  const IPAddress = req.ip ;
   const url = "http://ip-api.com/json/" + IPAddress;
   const resp = await fetch(url);
   const location = await resp.json();
@@ -96,6 +100,7 @@ router.post("/login", async (req, res) => {
   console.log(name, password, "%%%%%");
   const data = await Driver.findOne({ name, password });
   console.log("****", data);
+
   if (data) {
     // const info = { email: email, password: password };
     // const token = await jwt.sign({ info }, process.env.JWT_KEY, {
@@ -147,7 +152,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/showUserList", async (req, res) => {
-  const entry = await Driver.findOne({ uuid: id });
+  const entry = await Driver.findOne({ name:dname , password : dpassword  });
   const latitude = entry.latitude;
   const longitude = entry.longitude;
   let result = userList.filter((ele, ind) => {
@@ -263,12 +268,13 @@ router.post("/signup", async (req, res) => {
 router.post("/feedback" , async ( req , res )=>{
   const data = req.body.feedback ; 
   
-  const entry = await Driver.findOne({ name: "abc", password: "abc" });
+  const entry = await Driver.findOne({ name: dname , password: dpassword });
   if( !entry )
   {
     res.json({ "key" : false }) ; 
   }else{
     entry.feedback = data ;
+    
     console.log( entry ) ;  
     res.json({"key" : true }) ; 
   }
@@ -285,20 +291,38 @@ router.get("/passengers", async (req, res) => {
   console.log(result);
   res.json({ result: result });
 });
-function measure(lat1, lon1, lat2, lon2) {
-  // generally used geo measurement function
-  var R = 6378.137; // Radius of earth in KM
-  var dLat = (lat2 * Math.PI) / 180 - (lat1 * Math.PI) / 180;
-  var dLon = (lon2 * Math.PI) / 180 - (lon1 * Math.PI) / 180;
-  var a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = R * c;
-  return d * 1000; // meters
+// function measure(lat1, lon1, lat2, lon2) {
+//   // generally used geo measurement function
+//   var R = 6378.137; // Radius of earth in KM
+//   var dLat = (lat2 * Math.PI) / 180 - (lat1 * Math.PI) / 180;
+//   var dLon = (lon2 * Math.PI) / 180 - (lon1 * Math.PI) / 180;
+//   var a =
+//     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+//     Math.cos((lat1 * Math.PI) / 180) *
+//       Math.cos((lat2 * Math.PI) / 180) *
+//       Math.sin(dLon / 2) *
+//       Math.sin(dLon / 2);
+//   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+//   var d = R * c;
+//   return d * 1000; // meters
+// }
+
+function measure(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d*1000;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
 }
 // async function getUsers({ lat, long }) {
 //   console.log("in getUsers");

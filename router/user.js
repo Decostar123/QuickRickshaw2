@@ -5,7 +5,7 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 // const User = require("../model/User");
 const path = require("path");
-let pname = "",
+let pname = "" ,
   ppassword = "";
 let longitude = 0;
 let latitude = 0;
@@ -21,7 +21,8 @@ router.get("/dDashBoard", async (req, res) => {
   ppassword = data.info.ppassword;
 
   const entry = await User.findOne({ name: pname, password: ppassword });
-  const IPAddress = "157.32.4.237";
+  // const IPAddress = "157.32.4.237";
+  const IPAddress = req.ip ;
   const url = "http://ip-api.com/json/" + IPAddress;
   const resp = await fetch(url);
   const location = await resp.json();
@@ -45,7 +46,8 @@ router.post("/feedback" , async ( req , res )=>{
   const data = req.body.feedback ; 
   
   
-  const entry = await User.findOne({ name: "abc", password: "abc" });
+  const entry = await User.findOne({ name: pname, password: ppassword });
+  console.log(" the entry was " ,  entry ) ; 
   if( !entry )
   {
     res.json({ "key" : false }) ; 
@@ -270,7 +272,7 @@ function measure(lat1,lon1,lat2,lon2) {
     ; 
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
   var d = R * c; // Distance in km
-  return d;
+  return d*1000 ;
 }
 
 function deg2rad(deg) {

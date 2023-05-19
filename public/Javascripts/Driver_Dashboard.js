@@ -12,6 +12,65 @@ const DNotAvailable_URL = "http://localhost:3000/driver/DNotAvailable";
 const DIPAddress = "http://localhost:3000/driver/DIPAddress";
 const LOGOUT_URL = "http://localhost:3000/logout";
 const logOut = document.querySelector("#logOut") ; 
+
+// const send = document.querySelector("#send") ;
+
+
+
+
+const send = document.querySelector("#send") ;  
+const suggestion  = document.querySelector("#suggestion") ; 
+const container  = document.querySelector("#feedbackCointainer") ; 
+const cancel =  document.querySelector("#cancel") ;  
+const  mainContainer = document.querySelector("#mainContainer") ; 
+cancel.addEventListener( "click" , () =>{
+  container.style.visibility = "hidden" ; 
+      mainContainer.style.visibility = "visible" ; 
+})
+suggestion.addEventListener("click" , ()=>{
+  container.style.visibility = "visible" ; 
+  mainContainer.style.visibility = "hidden" ; 
+})
+send.addEventListener( "click" , async ()=>{
+  const feedback = document.querySelector("#floatingTextarea").value ; 
+  console.log( feedback  ); 
+  const feedbackURL = "http://localhost:3000/driver/feedback" ; 
+  const data = {feedback} ; 
+  const resp1 = await fetch( feedbackURL , {
+    method :"post" , 
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data), 
+  } ) ; 
+  const resp2 = await resp1.json() ; 
+  if( resp2.key ){
+      
+      console.log( " response received ")
+      success.innerHTML="send successfuly ";
+      success.style.visibility="visible";
+      setTimeout(()=>{
+        success.style.visibility="hidden";
+      } , 2000 ) ;
+      container.style.visibility = "hidden" ; 
+      mainContainer.style.visibility = "visible" ; 
+  }else{
+    // alert(" error in sending ")  ; 
+    errorMessage.innerHTML="some error occured!! Try again later";
+        error.style.visibility="visible";
+        setTimeout(()=>{
+          error.style.visibility="hidden";
+    
+        } , 2000 ) ; 
+  }
+
+
+})
+
+
+
+
+
 logOut.addEventListener('click' , async () =>{
   console.log("aaaa") ; 
   const ans = confirm("Are you sure to LOG OUT ?") ; 
@@ -52,7 +111,7 @@ DAvailable.addEventListener("click", () => {
   fetch(DAvailable_URL)
     .then((res) => res.json())
     .then((data) => {
-      alert("marked Available ");
+      // alert("marked Available ");
       console.log(data);
       if (data.key) {
         success.innerHTML="Marked Successfully.";

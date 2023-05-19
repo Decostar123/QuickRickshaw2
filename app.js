@@ -249,8 +249,7 @@ async function verificationDriver(req, res, next) {
   if (
     array[array.length - 1] === "login" ||
     array[array.length - 1] === "signup" || 
-    array[array.length - 1] === "driverExist" ||
-    array[array.length - 1] === "feedback"
+    array[array.length - 1] === "driverExist" 
   ) {
     console.log("direct acess via signu[p");
     next();
@@ -281,8 +280,7 @@ async function verificationUser(req, res, next) {
   if (
     array[array.length - 1] === "login" ||
     array[array.length - 1] === "signup" || 
-    array[array.length - 1] === "userExist" ||
-    array[array.length - 1] === "feedback"
+    array[array.length - 1] === "userExist"
   ) {
     console.log("diet signing up her ");
     next();

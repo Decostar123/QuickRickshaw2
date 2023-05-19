@@ -23,16 +23,18 @@ logOut.addEventListener('click' , async () =>{
     
 })
 // const PASSENGER_LIST = "http://localhost:3000/user/drivers";
-const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
-
+// const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
+const PASSENGER_LIST = "https://quickrickshaws.onrender.com/user/drivers";
+// DO NOT CONFUSE WITH THE NAME .... 
 // const body = document.getElementsByTagName("body")[0];
 const temp = document.querySelector("#tables") ; 
-async function message(){
+ function message(){
   alert(" message shoeinf ") ; 
   // const table = document.querySelector("#tables").getElementsByTagName('tbody')[0];
-  const resp = await fetch(PASSENGER_LIST);
-    const data = await resp.json();
-    const passengers = data.result;
+  fetch(PASSENGER_LIST).then( res => res.json())
+  .then( data => console.log( data ))
+    // const data = await resp.json();
+    // const passengers = data.result;
     // for (entry of passengers) {
     //       var row = table.insertRow();
     //       var cell1 = row.insertCell(0);
@@ -43,7 +45,7 @@ async function message(){
     //       cell1.innerHTML = entry.name;
     //       cell2.innerHTML = entry.phoneNo;
     //     } 
-    console.log( passengers ) ; 
+    // console.log( passengers ) ; 
 
 }
 // temp.addEventListener("load",  () => {

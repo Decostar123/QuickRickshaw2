@@ -25,6 +25,11 @@ logOut.addEventListener('click' , async () =>{
 // const PASSENGER_LIST = "http://localhost:3000/user/drivers";
 const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  // console.log("Hello World!");
+  alert("will start fetching ") ;
+});
 // window.addEventListener("load" , async (event ) => {
 //   const table = document.querySelector("#table");
 //   // console.log(table.innerHTML, "44444");

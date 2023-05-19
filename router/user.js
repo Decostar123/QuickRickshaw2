@@ -160,7 +160,7 @@ router.post("/userExist" , async (req, res) =>{
 router.get("/driverList", (req, res) => {
   const temp = path.resolve(__dirname, "..");
   console.log(temp);
-  res.sendFile(temp + "/public/Driver_list.html");
+  res.sendFile(temp + "/public/Driver_List.html");
   // res.json({ passenger_list: " Pssenger_list " });
 });
 

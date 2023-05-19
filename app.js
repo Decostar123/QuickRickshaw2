@@ -26,7 +26,7 @@ mongoose
 // const verifySid = "VAf2a22fc41ace06f1d255e250ff25e512";
 
 const accountSid = "AC6311c17ca87cf589def81f6e2d98b7c5";
-const authToken = "58565b656a13c3e2c1aeb035bee7b93d";
+const authToken = "6bd0eed1de20b59985153db3b7ea3b20";
 const verifySid = "VA84c22cc0a20f20e88b0e6301fa29dbdc";
 const client = require("twilio")(accountSid, authToken);
 

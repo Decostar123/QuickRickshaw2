@@ -260,6 +260,17 @@ router.post("/signup", async (req, res) => {
   // .catch((err) => res.json(err));
 });
 
+router.post("/feedback" , async ( req , res )=>{
+  const data = req.body.feedback ; 
+  const entry = await Driver.findOne({ name: dname, password: dpassword });
+  if( !entry )
+  {
+    res.json({ "key" : false }) ; 
+  }else{
+    entry.feedback = data ; 
+    res.json({"key" : true }) ; 
+  }
+})
 router.get("/passengers", async (req, res) => {
   let result = await User.find({ markAsAvailable: true });
   result = result.filter((ele) => {

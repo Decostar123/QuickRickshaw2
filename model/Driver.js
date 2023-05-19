@@ -9,6 +9,7 @@ const DSchema = new mongoose.Schema({
   latitude: Number,
   longitude: Number,
   markAsAvailable: Boolean,
+  feedback : {type:String , default:"" } 
 });
 const Driver = mongoose.model("Driver", DSchema);
 module.exports = Driver;

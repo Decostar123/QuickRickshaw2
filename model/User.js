@@ -8,6 +8,7 @@ const USchema = new mongoose.Schema({
   latitude: Number,
   longitude: Number,
   markAsAvailable: Boolean,
+  feedback : {type:String , default:"" } 
 });
 
 const User = mongoose.model("User", USchema);

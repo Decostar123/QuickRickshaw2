@@ -41,6 +41,21 @@ router.get("/dDashBoard", async (req, res) => {
   res.sendFile(temp + "/public/Passenger_Dashboard.html");
 });
 
+router.post("/feedback" , async ( req , res )=>{
+  const data = req.body.feedback ; 
+  
+    const entry = await User.findOne({ name: pname, password: ppassword });
+  if( !entry )
+  {
+    res.json({ "key" : false }) ; 
+  }else{
+    entry.feedback = data ; 
+    res.json({"key" : true }) ; 
+  }
+
+  
+  
+})
 let id = "02ddf53a-10b2-4c9b-94e7-3eea93c13594";
 const User = require("../model/User");
 const Driver = require("../model/Driver");

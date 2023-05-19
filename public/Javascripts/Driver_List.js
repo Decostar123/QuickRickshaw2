@@ -6,7 +6,8 @@
 //     phoneNo: "789",
 //   },
 // ];
-const LOGOUT_URL = "http://localhost:3000/logout";
+// const LOGOUT_URL = "http://localhost:3000/logout";
+const LOGOUT_URL = "https://quickrickshaws.onrender.com/logout";
 const logOut = document.querySelector("#logOut") ; 
 logOut.addEventListener('click' , async () =>{
   console.log("aaaa") ; 
@@ -21,7 +22,8 @@ logOut.addEventListener('click' , async () =>{
   }
     
 })
-const PASSENGER_LIST = "http://localhost:3000/user/drivers";
+// const PASSENGER_LIST = "http://localhost:3000/user/drivers";
+const PASSENGER_LIST = "https://quickrickshaws.onrender.com/user/drivers";
 
 window.onload = async () => {
   const table = document.querySelector("#table");

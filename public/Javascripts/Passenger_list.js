@@ -6,8 +6,10 @@
 //     phoneNo: "789",
 //   },
 // ];
-const PASSENGER_LIST = "http://localhost:3000/driver/passengers";
-const LOGOUT_URL = "http://localhost:3000/logout";
+// const PASSENGER_LIST = "http://localhost:3000/driver/passengers";
+// const LOGOUT_URL = "http://localhost:3000/logout";
+const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
+const LOGOUT_URL = "https://quickrickshaws.onrender.com/logout";
 const logOut = document.querySelector("#logOut") ; 
 logOut.addEventListener('click' , async () =>{
   console.log("aaaa") ; 

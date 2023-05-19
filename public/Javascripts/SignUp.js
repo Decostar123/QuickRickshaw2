@@ -1,7 +1,7 @@
-const Driver_Signup = "http://localhost:3000/driver/signup";
-const User_Signup = "http://localhost:3000/user/signup";
-// const Driver_Signup = "https://quickrickshaws.onrender.com/driver/signup";
-// const User_Signup = "https://quickrickshaws.onrender.com/user/signup";
+// const Driver_Signup = "http://localhost:3000/driver/signup";
+// const User_Signup = "http://localhost:3000/user/signup";
+const Driver_Signup = "https://quickrickshaws.onrender.com/driver/signup";
+const User_Signup = "https://quickrickshaws.onrender.com/user/signup";
 const name1 = document.querySelector("#name");
 const email1 = document.querySelector("#email");
 const phone = document.querySelector("#phone");
@@ -36,7 +36,8 @@ resendOTP.addEventListener("click" , async ()=>{
   //   console.log("formstatus");
     
     
-    const otpurl = "http://localhost:3000/getOtp";
+    // const otpurl = "http://localhost:3000/getOtp";
+    const otpurl = "https://quickrickshaws.onrender.com/getOtp";
     // const verifyOtp = "http://localhost:3000/verifyOtp";
     // const phoneNo = document.querySelector("#phone").value;
     const data1 = { phoneNo: phoneNo };
@@ -212,8 +213,12 @@ form.addEventListener("submit", async (e) => {
   spanotp.innerHTML=phoneNo;
   phoneNo="+91"+phoneNo;
 
-  const driverExist =  check === true ?"http://localhost:3000/driver/driverExist" :
-  "http://localhost:3000/user/userExist"  ; 
+  // const driverExist =  check === true ?"http://localhost:3000/driver/driverExist" :
+  // "http://localhost:3000/user/userExist"  ; 
+
+
+  const driverExist =  check === true ?"https://quickrickshaws.onrender.com/driver/driverExist" :
+  "https://quickrickshaws.onrender.com/user/userExist"  ; 
   console.log( "====1"   , driverExist )  ; 
   const edata = { email };
   console.log( "====2"   , edata  )  ; 
@@ -239,8 +244,10 @@ form.addEventListener("submit", async (e) => {
     console.log("formstatus");
     
     
-    const otpurl = "http://localhost:3000/getOtp";
-    const verifyOtp = "http://localhost:3000/verifyOtp";
+    // const otpurl = "http://localhost:3000/getOtp";
+    // const verifyOtp = "http://localhost:3000/verifyOtp";
+    const otpurl = "https://quickrickshaws.onrender.com/getOtp";
+    const verifyOtp = "https://quickrickshaws.onrender.com/verifyOtp";
     // const phoneNo = document.querySelector("#phone").value;
     const data1 = { phoneNo: phoneNo };
     console.log("phone no is -- "+ phoneNo ) ; 
@@ -341,7 +348,8 @@ form.addEventListener("submit", async (e) => {
   // }
 });
 document.querySelector("#otpverify").addEventListener("click", async () => {
-  const verifyOtp = "http://localhost:3000/verifyOtp";
+  // const verifyOtp = "http://localhost:3000/verifyOtp";
+  const verifyOtp = "https://quickrickshaws.onrender.com/verifyOtp";
   const otp = document.querySelector("#otp").value;
   console.log("otp value is ", otp);
   const data2 = { otp: otp };
@@ -377,7 +385,8 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
     //   http://localhost:3000/driver/signup
     const SIGNUP_URL = check === true ? Driver_Signup : User_Signup;
     console.log("SIGBUPURL", SIGNUP_URL);
-    const LOGIN_URL = "http://localhost:3000 ";
+    // const LOGIN_URL = "http://localhost:3000 ";
+    const LOGIN_URL = "https://quickrickshaws.onrender.com";
 
     fetch(SIGNUP_URL, {
       method: "post",

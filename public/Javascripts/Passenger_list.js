@@ -26,7 +26,7 @@ logOut.addEventListener('click' , async () =>{
 })
 window.onload = async () => {
   const table = document.querySelector("#table");
-  console.log(table.innerHTML, "44444");
+  // console.log(table.innerHTML, "44444");
   console.log(table);
   const resp = await fetch(PASSENGER_LIST);
   const data = await resp.json();

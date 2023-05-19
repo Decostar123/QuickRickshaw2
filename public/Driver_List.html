@@ -10,7 +10,7 @@
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="stylesheet" href="Stylesheets/Driver_Dashboard.css">
 </head>
-<body onload="message()">
+<body >
 
     <!-- navbar--------------------------- -->
 
@@ -42,7 +42,7 @@
     <h1 class="h3 mb-3 fw-normal title" ><b> Available Driver List</b></h1>
 
     <div class="container table-responsive">
-      <table class="table tale-sm table-striped-columns table-hover" id="tables">
+      <table onload="message()" class="table tale-sm table-striped-columns table-hover" id="tables">
         <thead class="table-dark text-center table-success">
           <tr>
             <th><i class="fa-solid fa-user"></i> Driver Name</th>

@@ -32,6 +32,7 @@ window.onload = async () => {
   const resp = await fetch(PASSENGER_LIST);
   const data = await resp.json();
   const passengers = data.result;
+  console.log( "the list of passengers " , passengers ) ; 
 
   for (entry of passengers) {
     var row = table.insertRow();

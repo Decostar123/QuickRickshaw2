@@ -24,7 +24,7 @@ logOut.addEventListener('click' , async () =>{
   }
     
 })
-window.onload = async () => {
+window.addEventListener( "load" ,  async (event ) => {
   const table = document.querySelector("#table");
   // console.log(table.innerHTML, "44444");
   console.log(table);
@@ -44,4 +44,4 @@ window.onload = async () => {
     cell2.innerHTML = entry.phoneNo;
   }
   console.log(passengers);
-};
+}) ;

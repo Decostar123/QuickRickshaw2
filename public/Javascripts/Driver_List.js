@@ -25,7 +25,7 @@ logOut.addEventListener('click' , async () =>{
 // const PASSENGER_LIST = "http://localhost:3000/user/drivers";
 const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
 
-window.onload = async () => {
+window.addEventListener("load" , async (event ) => {
   const table = document.querySelector("#table");
   // console.log(table.innerHTML, "44444");
   console.log(table);
@@ -45,4 +45,4 @@ window.onload = async () => {
     cell2.innerHTML = entry.phoneNo;
   }
   console.log(passengers);
-};
+} ) ;

@@ -165,7 +165,7 @@ router.get("/driverList", (req, res) => {
 });
 
 router.get("/PAvailable", async (req, res) => {
-  const data = await User.update({ name: pname, password: ppassword } , 
+  const data = await User.updateOne({ name: pname, password: ppassword } , 
     {markAsAvailable : 1 });
   // console.log("available", data);
   if (data) {
@@ -245,7 +245,7 @@ router.post("/signup", async (req, res) => {
 });
 
 router.get("/PNotAvailable", async (req, res) => {
-  const data = await User.update({ name: pname, password: ppassword } , 
+  const data = await User.updateOne({ name: pname, password: ppassword } , 
     {markAsAvailable : 0 });
   console.log("available", data);
   if (data) {

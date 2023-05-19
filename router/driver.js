@@ -177,7 +177,7 @@ router.get("/passengerList", (req, res) => {
 });
 router.get("/DAvailable", async (req, res) => {
   // const data = await Driver.findOne({ name: dname, password: dpassword });
-  const data = await Driver.update({ name: dname, password: dpassword } , 
+  const data = await Driver.updateOne({ name: dname, password: dpassword } , 
     {markAsAvailable : 1 } );
   console.log("available", data);
   if (data) {
@@ -193,7 +193,7 @@ router.get("/DAvailable", async (req, res) => {
 
 router.get("/DNotAvailable", async (req, res) => {
   // const data = await Driver.findOne({ name: dname, password: dpassword });
-  const data = await Driver.update({ name: dname, password: dpassword } , 
+  const data = await Driver.updateOne({ name: dname, password: dpassword } , 
     {markAsAvailable : 0 } );
   console.log("available", data);
   if (data) {

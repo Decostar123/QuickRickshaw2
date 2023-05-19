@@ -34,7 +34,7 @@ router.get("/dDashBoard", async (req, res) => {
   longitude = location.lon;
   latitude = location.lat;
   console.log("(((", entry);
-
+  console.log( " my lati and longi" , longitude , latitude ) ; 
   console.log("ppname", pname, "ppasswird", ppassword);
   const temp = path.resolve(__dirname, "..");
   // console.log(temp);
@@ -255,6 +255,7 @@ router.get("/PNotAvailable", async (req, res) => {
 
 router.get("/drivers", async (req, res) => {
   let result = await Driver.find({ markAsAvailable: true });
+  console.log( result ) ; 
   result = result.filter((ele) => {
     const lat = ele.latitude;
     const lon = ele.longitude;

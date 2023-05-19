@@ -42,11 +42,13 @@ const temp = document.querySelector("#tables") ;
           var row = table.insertRow();
           var cell1 = row.insertCell(0);
           var cell2 = row.insertCell(1);
+          var cell3 = row.insertCell(2);
           // const data = `<tr><td>${entry.name}</td><td>${entry.phoneNo}</td>
           // <td>${entry.name}</td><td>${entry.name}</td></tr>`;
           // table.innerHTML += data;
           cell1.innerHTML = entry.name;
           cell2.innerHTML = entry.phoneNo;
+          cell3.innerHTML = entry.rickshawNo ; 
         } 
 
   

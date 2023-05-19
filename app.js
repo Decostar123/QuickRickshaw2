@@ -65,8 +65,8 @@ app.get("/", async (req, res) => {
   //   .request(url)
   //   .then((res) => console.log(res.data))
   //   .catch((err) => console.log("galate h"));
-  res.clearCookie('DRIVER_JWT_KEY') ; 
-  res.clearCookie('USER_JWT_KEY') ;
+  // res.clearCookie('DRIVER_JWT_KEY') ; 
+  // res.clearCookie('USER_JWT_KEY') ;
   const token1 = req.cookies.USER_JWT_KEY;
   const token2 = req.cookies.DRIVER_JWT_KEY;
   console.log( token1 , "tokens////" , token2 ) ; 

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const DSchema = new mongoose.Schema({
-  uuid: { type: String, reuired: false },
+  uuid: { type: String, required: false },
   email: String,
   name: String,
   password: String,
@@ -8,7 +8,7 @@ const DSchema = new mongoose.Schema({
   phoneNo: Number,
   latitude: Number,
   longitude: Number,
-  markAsAvailable: Boolean,
+  markAsAvailable: { type : Number , default:0 } ,
   feedback : {type:String , default:"" } 
 });
 const Driver = mongoose.model("Driver", DSchema);

@@ -168,7 +168,7 @@ router.get("/PAvailable", async (req, res) => {
   const data = await User.findOne({ name: pname, password: ppassword });
   console.log("available", data);
   if (data) {
-    data.markAsAvailable = true;
+    data.markAsAvailable = 1;
     res.json({ key: true });
   } else {
     res.json({ key: false });
@@ -246,7 +246,7 @@ router.get("/PNotAvailable", async (req, res) => {
   const data = await User.findOne({ name: pname, password: ppassword });
   console.log("available", data);
   if (data) {
-    data.markAsAvailable = false;
+    data.markAsAvailable = 0 ;
     res.json({ key: true });
   } else {
     res.json({ key: false });
@@ -254,7 +254,7 @@ router.get("/PNotAvailable", async (req, res) => {
 });
 
 router.get("/drivers", async (req, res) => {
-  let result = await Driver.find({ markAsAvailable: true });
+  let result = await Driver.find({ markAsAvailable: 1 });
   console.log( result ) ; 
   result = result.filter((ele) => {
     const lat = ele.latitude;

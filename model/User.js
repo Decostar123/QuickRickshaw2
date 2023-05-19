@@ -7,7 +7,7 @@ const USchema = new mongoose.Schema({
   password: String,
   latitude: Number,
   longitude: Number,
-  markAsAvailable: Boolean,
+  markAsAvailable: { type : Number , default:0 },
   feedback : {type:String , default:"" } 
 });
 

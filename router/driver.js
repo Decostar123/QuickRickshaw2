@@ -179,7 +179,7 @@ router.get("/DAvailable", async (req, res) => {
   const data = await Driver.findOne({ name: dname, password: dpassword });
   console.log("available", data);
   if (data) {
-    data.markAsAvailable = true;
+    data.markAsAvailable = 1 ;
     res.json({ key: true });
   } else {
     res.json({ key: false });
@@ -190,7 +190,7 @@ router.get("/DNotAvailable", async (req, res) => {
   const data = await Driver.findOne({ name: dname, password: dpassword });
   console.log("available", data);
   if (data) {
-    data.markAsAvailable = false;
+    data.markAsAvailable = 0 ;
     res.json({ key: true });
   } else {
     res.json({ key: false });
@@ -283,7 +283,7 @@ router.post("/feedback" , async ( req , res )=>{
   }
 })
 router.get("/passengers", async (req, res) => {
-  let result = await User.find({ markAsAvailable: true });
+  let result = await User.find({ markAsAvailable: 1 });
   result = result.filter((ele) => {
     const lat = ele.latitude;
     const lon = ele.longitude;

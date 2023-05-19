@@ -44,12 +44,14 @@ router.get("/dDashBoard", async (req, res) => {
 router.post("/feedback" , async ( req , res )=>{
   const data = req.body.feedback ; 
   
-    const entry = await User.findOne({ name: pname, password: ppassword });
+  
+  const entry = await User.findOne({ name: "abc", password: "abc" });
   if( !entry )
   {
     res.json({ "key" : false }) ; 
   }else{
     entry.feedback = data ; 
+    console.log( entry )  ; 
     res.json({"key" : true }) ; 
   }
 
@@ -65,8 +67,8 @@ router.post("/login", async (req, res) => {
   const password = req.body.password;
   pname = name;
   ppassword = password;
-  dname = name;
-  dpassword = password;
+  // dname = name;
+  // dpassword = password;
   console.log(name, password);
   const data = await User.findOne({ name, password });
   console.log(data);
@@ -98,6 +100,8 @@ router.post("/login", async (req, res) => {
 
     res.json({ key: true });
   } else {
+
+
     res.json({ key: false });
   }
   // .then((data) => {
@@ -255,19 +259,21 @@ router.get("/drivers", async (req, res) => {
   console.log(result);
   res.json({ result: result });
 });
-function measure(lat1, lon1, lat2, lon2) {
-  // generally used geo measurement function
-  var R = 6378.137; // Radius of earth in KM
-  var dLat = (lat2 * Math.PI) / 180 - (lat1 * Math.PI) / 180;
-  var dLon = (lon2 * Math.PI) / 180 - (lon1 * Math.PI) / 180;
-  var a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos((lat1 * Math.PI) / 180) *
-      Math.cos((lat2 * Math.PI) / 180) *
-      Math.sin(dLon / 2) *
-      Math.sin(dLon / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = R * c;
-  return d * 1000; // meters
+function measure(lat1,lon1,lat2,lon2) {
+  var R = 6371; // Radius of the earth in km
+  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+  var dLon = deg2rad(lon2-lon1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+    ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // Distance in km
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
 }
 module.exports = router;

@@ -262,12 +262,14 @@ router.post("/signup", async (req, res) => {
 
 router.post("/feedback" , async ( req , res )=>{
   const data = req.body.feedback ; 
-  const entry = await Driver.findOne({ name: dname, password: dpassword });
+  
+  const entry = await Driver.findOne({ name: "abc", password: "abc" });
   if( !entry )
   {
     res.json({ "key" : false }) ; 
   }else{
-    entry.feedback = data ; 
+    entry.feedback = data ;
+    console.log( entry ) ;  
     res.json({"key" : true }) ; 
   }
 })

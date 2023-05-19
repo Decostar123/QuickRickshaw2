@@ -262,6 +262,7 @@ router.get("/drivers", async (req, res) => {
     return distance <= 100000;
   });
   console.log(result);
+ 
   res.json({ result: result });
 });
 function measure(lat1,lon1,lat2,lon2) {

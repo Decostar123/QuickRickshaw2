@@ -8,7 +8,7 @@ const errorMessage=document.getElementById("errorMessage");
 // const PASSENGER_URL = "http://localhost:3000/user/driverList";
 // const DAvailable_URL = "http://localhost:3000/user/PAvailable";
 // const PNotAvailable_URL = "http://localhost:3000/user/PNotAvailable";
-const PASSENGER_URL = "https://quickrickshaws.onrender.com/user/driverList";
+const DRIVER_URL = "https://quickrickshaws.onrender.com/user/driverList";
 const DAvailable_URL = "https://quickrickshaws.onrender.com/user/PAvailable";
 const PNotAvailable_URL = "https://quickrickshaws.onrender.com/user/PNotAvailable";
 // const LOGOUT_URL = "http://localhost:3000/logout";
@@ -76,7 +76,7 @@ logOut.addEventListener('click' , async () =>{
     
 })
 driverList.addEventListener("click", () => {
-  window.open(PASSENGER_URL);
+  window.open(DRIVER_URL);
 });
 DAvailable.addEventListener("click", () => {
   fetch(DAvailable_URL)

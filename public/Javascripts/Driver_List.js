@@ -23,7 +23,7 @@ logOut.addEventListener('click' , async () =>{
     
 })
 // const PASSENGER_LIST = "http://localhost:3000/user/drivers";
-const PASSENGER_LIST = "https://quickrickshaws.onrender.com/user/drivers";
+const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
 
 window.onload = async () => {
   const table = document.querySelector("#table");

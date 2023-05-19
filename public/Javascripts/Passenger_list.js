@@ -8,7 +8,7 @@
 // ];
 // const PASSENGER_LIST = "http://localhost:3000/driver/passengers";
 // const LOGOUT_URL = "http://localhost:3000/logout";
-const PASSENGER_LIST = "https://quickrickshaws.onrender.com/user/drivers"  ; 
+const DRIVER_LIST = "https://quickrickshaws.onrender.com/user/drivers"  ; 
 const LOGOUT_URL = "https://quickrickshaws.onrender.com/logout";
 const logOut = document.querySelector("#logOut") ; 
 logOut.addEventListener('click' , async () =>{
@@ -28,7 +28,7 @@ window.onload = async () => {
   const table = document.querySelector("#table");
   // console.log(table.innerHTML, "44444");
   console.log(table);
-  const resp = await fetch(PASSENGER_LIST);
+  const resp = await fetch(DRIVER_LIST);
   const data = await resp.json();
   const passengers = data.result;
   console.log( "the list of passengers " , passengers ) ; 

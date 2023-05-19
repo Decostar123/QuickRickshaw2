@@ -103,8 +103,8 @@ router.post("/login", async (req, res) => {
     // });
     // console.log( tokrn ) ;
     // res.cookie("DRIVER_JWT_KEY", token);
-    // const IPAddress = req.ip;
-    const IPAddress = "157.32.4.237";
+    const IPAddress = req.ip;
+    // const IPAddress = "157.32.4.237";
     const url = "http://ip-api.com/json/" + IPAddress;
     const resp = await fetch(url);
     const location = await resp.json();

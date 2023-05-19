@@ -81,17 +81,17 @@ router.post("/login", async (req, res) => {
     // res.cookie("DRIVER_JWT_KEY", token);
     // const info = { email: email, password: password };
 
-    // const IPAddress = "157.32.4.237";
-    // const url = "http://ip-api.com/json/" + IPAddress;
-    // const resp = await fetch(url);
-    // const location = await resp.json();
-    // data.longitude = location.lon;
-    // data.latitude = location.lat;
-    // longitude = location.lon;
-    // latitude = location.lat;
+    const IPAddress = req.ip ;
+    const url = "http://ip-api.com/json/" + IPAddress;
+    const resp = await fetch(url);
+    const location = await resp.json();
+    data.longitude = location.lon;
+    data.latitude = location.lat;
+    longitude = location.lon;
+    latitude = location.lat;
     // console.log(data);
     const info = { pname: pname, ppassword: ppassword };
-    const token = await jwt.sign({ info }, process.env.USER_JWT_KEY, {
+    const token =  jwt.sign({ info }, process.env.USER_JWT_KEY, {
       expiresIn: "172800s",
     });
     console.log(token);

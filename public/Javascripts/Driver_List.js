@@ -25,24 +25,24 @@ logOut.addEventListener('click' , async () =>{
 // const PASSENGER_LIST = "http://localhost:3000/user/drivers";
 const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
 
-window.addEventListener("load" , async (event ) => {
-  const table = document.querySelector("#table");
-  // console.log(table.innerHTML, "44444");
-  console.log(table);
-  const resp = await fetch(PASSENGER_LIST);
-  const data = await resp.json();
-  const passengers = data.result;
-  console.log( "the list of passengers " , passengers ) ; 
+// window.addEventListener("load" , async (event ) => {
+//   const table = document.querySelector("#table");
+//   // console.log(table.innerHTML, "44444");
+//   console.log(table);
+//   const resp = await fetch(PASSENGER_LIST);
+//   const data = await resp.json();
+//   const passengers = data.result;
+//   console.log( "the list of passengers " , passengers ) ; 
 
-  for (entry of passengers) {
-    var row = table.insertRow();
-    var cell1 = row.insertCell(0);
-    var cell2 = row.insertCell(1);
-    // const data = `<tr><td>${entry.name}</td><td>${entry.phoneNo}</td>
-    // <td>${entry.name}</td><td>${entry.name}</td></tr>`;
-    // table.innerHTML += data;
-    cell1.innerHTML = entry.name;
-    cell2.innerHTML = entry.phoneNo;
-  }
-  console.log(passengers);
-} ) ;
+//   for (entry of passengers) {
+//     var row = table.insertRow();
+//     var cell1 = row.insertCell(0);
+//     var cell2 = row.insertCell(1);
+//     // const data = `<tr><td>${entry.name}</td><td>${entry.phoneNo}</td>
+//     // <td>${entry.name}</td><td>${entry.name}</td></tr>`;
+//     // table.innerHTML += data;
+//     cell1.innerHTML = entry.name;
+//     cell2.innerHTML = entry.phoneNo;
+//   }
+//   console.log(passengers);
+// } ) ;

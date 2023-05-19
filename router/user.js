@@ -165,10 +165,12 @@ router.get("/driverList", (req, res) => {
 });
 
 router.get("/PAvailable", async (req, res) => {
-  const data = await User.findOne({ name: pname, password: ppassword });
-  console.log("available", data);
+  const data = await User.update({ name: pname, password: ppassword } , 
+    {markAsAvailable : 1 });
+  // console.log("available", data);
   if (data) {
-    data.markAsAvailable = 1;
+    // data.markAsAvailable = 1;
+    // data.save() ; 
     res.json({ key: true });
   } else {
     res.json({ key: false });
@@ -243,10 +245,12 @@ router.post("/signup", async (req, res) => {
 });
 
 router.get("/PNotAvailable", async (req, res) => {
-  const data = await User.findOne({ name: pname, password: ppassword });
+  const data = await User.update({ name: pname, password: ppassword } , 
+    {markAsAvailable : 0 });
   console.log("available", data);
   if (data) {
-    data.markAsAvailable = 0 ;
+    // data.markAsAvailable = 0 ;
+    // data.save() ; 
     res.json({ key: true });
   } else {
     res.json({ key: false });

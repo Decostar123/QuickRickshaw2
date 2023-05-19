@@ -176,12 +176,14 @@ router.get("/passengerList", (req, res) => {
   // res.json({ passenger_list: " Pssenger_list " });
 });
 router.get("/DAvailable", async (req, res) => {
-  const data = await Driver.findOne({ name: dname, password: dpassword });
+  // const data = await Driver.findOne({ name: dname, password: dpassword });
+  const data = await Driver.update({ name: dname, password: dpassword } , 
+    {markAsAvailable : 1 } );
   console.log("available", data);
   if (data) {
-    data.markAsAvailable = 1 ;
+    // data.markAsAvailable = 1 ;
   
-    data.save() ; 
+    // data.save() ; 
     console.log( "--> " , data ) ; 
     res.json({ key: true });
   } else {
@@ -190,10 +192,12 @@ router.get("/DAvailable", async (req, res) => {
 });
 
 router.get("/DNotAvailable", async (req, res) => {
-  const data = await Driver.findOne({ name: dname, password: dpassword });
+  // const data = await Driver.findOne({ name: dname, password: dpassword });
+  const data = await Driver.update({ name: dname, password: dpassword } , 
+    {markAsAvailable : 0 } );
   console.log("available", data);
   if (data) {
-    data.markAsAvailable = 0 ;
+    // data.markAsAvailable = 0 ;
     console.log( "--> " , data ) ; 
     data.save() ; 
     res.json({ key: true });

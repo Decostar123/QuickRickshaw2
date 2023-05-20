@@ -203,7 +203,7 @@ router.get("/DNotAvailable", async (req, res) => {
   if (data) {
     // data.markAsAvailable = 0 ;
     console.log( "--> " , data ) ; 
-    data.save() ; 
+    // data.save() ; 
     res.json({ key: true });
   } else {
     res.json({ key: false });

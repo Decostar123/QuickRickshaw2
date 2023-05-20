@@ -35,7 +35,7 @@ router.get("/dDashBoard", async (req, res) => {
   // entry.latitude = location.lat;
   longitude = location.lon;
   latitude = location.lat;
-  console.log("(((", entry);
+  // console.log("(((", entry);
   console.log( " my lati and longi" , longitude , latitude ) ; 
   console.log("ppname", pname, "ppasswird", ppassword);
   const temp = path.resolve(__dirname, "..");

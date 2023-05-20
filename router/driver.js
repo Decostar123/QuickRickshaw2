@@ -85,7 +85,7 @@ router.get("/dDashBoard", async (req, res) => {
     {longitude : location.lon , latitude : location.lat }) ; 
   longitude = location.lon;
   latitude = location.lat;
-  console.log("(((", entry);
+  // console.log("(((", entry);
 
   console.log("ppname", dname, "ppasswird", dpassword);
 

@@ -263,6 +263,7 @@ router.get("/PNotAvailable", async (req, res) => {
 
 router.get("/drivers", async (req, res) => {
   let result = await Driver.find({ markAsAvailable: 1 });
+  console.log("getting the marked entry " , result ) ; 
   console.log( result ) ; 
   result = result.filter((ele) => {
     const lat = ele.latitude;

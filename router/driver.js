@@ -297,6 +297,7 @@ router.post("/feedback" , async ( req , res )=>{
 })
 router.get("/passengers", async (req, res) => {
   let result = await User.find({ markAsAvailable: 1 });
+  console.log(" getting the true entry " , result ) ; 
   result = result.filter((ele) => {
     const lat = ele.latitude;
     const lon = ele.longitude;

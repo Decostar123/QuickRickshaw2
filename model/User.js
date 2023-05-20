@@ -3,7 +3,9 @@ const mongoose = require("mongoose");
 const USchema = new mongoose.Schema({
   uuid: { type: String, reuired: false },
   email: String,
+  
   name: String,
+  phoneNo : Number , 
   password: String,
   latitude: Number,
   longitude: Number,

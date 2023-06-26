@@ -54,16 +54,26 @@
                 </symbol>
               </svg>
               
-        <div class="alert alert-danger d-flex align-items-center custom-alert" role="alert" style="visibility: hidden;height:6vh;margin-top: 5vh;z-index:2;" id="error">
+        <!-- alert ------------------- -->
+        <div class="alert alert-danger d-flex align-items-center custom-alert d-none" role="alert" style="height:6vh;margin-bottom: 0px;z-index:2;" id="error">
            <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 4vh;"><use xlink:href="#exclamation-triangle-fill"/></svg>
             <div id="errorMessage">
               
             </div>
         </div>
 
-        <div class="alert alert-success" role="alert" style="visibility: hidden;z-index:4;height:8vh;margin-top: 5vh;" id="success">
+        <!-- <div class="alert alert-success" role="alert" style="visibility: hidden;z-index:4;height:8vh;margin-top: 5vh;" id="success">
+        </div> -->
+
+        <div class="alert alert-success d-flex align-items-center d-none" role="alert" id="success" style="z-index:3;height:6vh;margin-bottom: 0px;">
+          <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="height: 4vh;"><use xlink:href="#check-circle-fill"/></svg>
+          <div id="success-one">
+            <!-- change here -->
+          </div>
         </div>
       
+
+        <!-- main---------------------- -->
       <main class="form-signin w-100 m-auto">
         <form>
           <img class="mb-4" src="images/templogo.ico" alt="" style="padding-left: 7%;">

@@ -35,7 +35,24 @@
         </div>
     </nav>
 
+    <!-- alert------------------------ -->
+    <div class="alert alert-danger d-flex align-items-center custom-alert d-none" role="alert" style="z-index:3;height:6vh;margin-bottom: 0px;" id="errorMessage">
+      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 4vh;"><use xlink:href="#exclamation-triangle-fill"/></svg>
+       <div id="error1">
+       </div>
+     </div>
+     
+     <!-- <div class="alert alert-success " role="alert" style="z-index:4;height:8vh" id="success">
+     </div> -->
 
+     <div class="alert alert-success d-flex align-items-center d-none" role="alert" id="success" style="z-index:3;height:6vh;margin-bottom: 0px;">
+      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="height: 4vh;"><use xlink:href="#check-circle-fill"/></svg>
+      <div id="success1">
+        <!-- change here -->
+      </div>
+    </div>
+
+     
     <!-- otp box------------------------------------------------- -->
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="check-circle-fill" viewBox="0 0 16 16">
@@ -48,32 +65,25 @@
         <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
       </symbol>
     </svg>
-    
-<div class="alert alert-danger d-flex align-items-center custom-alert" role="alert" style="visibility: hidden;z-index:3;height:6vh;margin-top: 5vh;" id="errorMessage">
- <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 4vh;"><use xlink:href="#exclamation-triangle-fill"/></svg>
-  <div id="error1">
-  </div>
-</div>
 
-<div class="alert alert-success" role="alert" style="visibility: hidden;z-index:4;height:8vh;margin-top: 5vh;" id="success">
-</div>
-
-    <div class="card otp-box" style="width: 22rem;" id="otpbox">
-      <img src="images/otp.png" alt="Otp verification" class="card-img-top">
-      <div class="card-body">
-          <h5 class="card-title text-center">Verify Mobile Number</h5>
-          <p class="card-text text-center">Please enter the OTP we've send to </p>
-          <h6 class="card-text text-center">+91-<span id="spanotp"></span></h6>
-          <div class="mb-3">
-            <label for="otp" class="form-label">Enter OTP : </label>
-            <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP Here">
-            <!-- <p class="text-end"><a href="#" class="link-underline-info" id="resendOTP">Resend OTP</a></p>-->
-            <p class="text-end"  id="resendOTP">Resend OTP</p>
-          
-          </div>
-          <button class="btn btn-lg btn-success col-12" id="otpverify">Verify</button>
-      </div>
-  </div>
+    <div class="otp-box d-none" id="otpbox">
+      <div class="card " style="width: 22rem;">
+        <img src="images/otp.png" alt="Otp verification" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title text-center">Verify Mobile Number</h5>
+            <p class="card-text text-center">Please enter the OTP we've send to </p>
+            <h6 class="card-text text-center">+91-<span id="spanotp"></span></h6>
+            <div class="mb-3">
+              <label for="otp" class="form-label">Enter OTP : </label>
+              <input type="text" class="form-control" id="otp" name="otp" placeholder="Enter OTP Here">
+              <!-- <p class="text-end"><a href="#" class="link-underline-info" id="resendOTP">Resend OTP</a></p>-->
+              <p class="text-end"  id="resendOTP">Resend OTP</p>
+            
+            </div>
+            <button class="btn btn-lg btn-success col-12" id="otpverify">Verify</button>
+        </div>
+    </div>
+    </div>
 
       <!-- form-------------------------------------- -->
       
@@ -103,7 +113,7 @@
 
                 <div class="col-md-6">
                     <label for="name" class="form-label">Your Name / Username</label>
-                    <input type="text" class="form-control is-invalid"   id="name" placeholder="Enter Your Name"  required>
+                    <input type="text" class="form-control "   id="name" placeholder="Enter Your Name"  required>
                     <div class="valid-feedback">
                       Looks good!
                     </div>
@@ -128,7 +138,7 @@
 
                 <div class="col-md-6">
                     <label for="email" class="form-label">Email id</label>
-                    <input type="email" class="form-control is-invalid" id="email" aria-describedby="emailFeedback" placeholder="Enter Your Email id" required>
+                    <input type="email" class="form-control " id="email" aria-describedby="emailFeedback" placeholder="Enter Your Email id" required>
                     <div id="emailFeedback" class="invalid-feedback">
                       Please provide a valid Email id.
                     </div>
@@ -141,7 +151,7 @@
                     <label for="phone" class="form-label"> Mobile No.</label>
                     <div class="input-group has-validation">
                       <span class="input-group-text" id="inputGroupPrepend4">+91</span>
-                      <input type="tel" class="form-control is-invalid" placeholder="Enter Your Mobile no."  id="phone" aria-describedby="inputGroupPrepend4 mobileFeedback" required>
+                      <input type="tel" class="form-control " placeholder="Enter Your Mobile no."  id="phone" aria-describedby="inputGroupPrepend4 mobileFeedback" required>
                       <div id="mobileFeedback" class="invalid-feedback">
                         Please enter a mobile number
                       </div>
@@ -153,7 +163,7 @@
                 
                 <div class="col-md-4" id="passwordField">
                     <label for="password" class="form-label">Choose Password</label>
-                    <input type="password" class="form-control is-invalid" id="password" aria-describedby="passwordFeedback" placeholder="Enter Password" required>
+                    <input type="password" class="form-control " id="password" aria-describedby="passwordFeedback" placeholder="Enter Password" required>
                     <div id="passwordFeedback" class="invalid-feedback">
                         Your password must be 8-20 characters long, contain capital and small letter, numbers, and special characters from [@$!#] and must not contain spaces, or emoji.
                     </div>
@@ -164,7 +174,7 @@
 
                 <div class="col-md-4 " id="rickshawField">
                     <label for="rickshaw" class="form-label">Rickshaw No.</label>
-                    <input type="text" class="form-control is-invalid" id="rickshaw" aria-describedby="rickshawFeedback1 rickshawFeedback2"  placeholder="Enter Your Rickshaw no.">
+                    <input type="text" class="form-control " id="rickshaw" aria-describedby="rickshawFeedback1 rickshawFeedback2"  placeholder="Enter Your Rickshaw no.">
                     <div class="valid-feedback" id="rickshawFeedback1" >
                       Looks good!
                     </div>

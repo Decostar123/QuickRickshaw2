@@ -35,8 +35,8 @@
 
     <!-- feedback---------------------- -->
 
-    <div class="feedback-cointaner1 d-none">
-      <div class="card feedback-cointaner" style="width: 22rem;" id="feedbackCointainer">
+    <div class="feedback-cointaner1 d-none" id="feedbackCointainer">
+      <div class="card feedback-cointaner" style="width: 22rem;" >
         <img src="images/feedback.png" alt="Feedback" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title text-center">Give Feedback</h5>
@@ -68,12 +68,7 @@
      <div class="alert alert-success" role="alert" style="visibility: hidden;z-index:4;height:8vh;margin-top: 5vh;" id="success">
      </div> -->
 
-     <div class="alert alert-danger d-flex align-items-center custom-alert d-none" role="alert" style="height:6vh;margin-bottom: 0px;z-index:2;" id="error">
-      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 4vh;"><use xlink:href="#exclamation-triangle-fill"/></svg>
-       <div id="errorMessage">
-         
-       </div>
-   </div>
+     
 
    <!-- <div class="alert alert-success" role="alert" style="visibility: hidden;z-index:4;height:8vh;margin-top: 5vh;" id="success">
    </div> -->
@@ -89,10 +84,16 @@
     </symbol>
   </svg>
 
+  <div class="alert alert-danger d-flex align-items-center custom-alert d-none" role="alert" style="height:6vh;margin-bottom: 0px;z-index:2;" id="errorMessage">
+    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="height: 4vh;"><use xlink:href="#exclamation-triangle-fill"/></svg>
+     <div id="error1">
+       
+     </div>
+ </div>
 
    <div class="alert alert-success d-flex align-items-center d-none" role="alert" id="success" style="z-index:3;height:6vh;margin-bottom: 0px;">
      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="height: 4vh;"><use xlink:href="#check-circle-fill"/></svg>
-     <div id="success-one">
+     <div id="success1">
        <!-- change here -->
      </div>
    </div>

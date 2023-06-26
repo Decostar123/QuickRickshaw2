@@ -2,11 +2,12 @@ console.log(" this is the login js ");
 const driverLogin = document.querySelector("#driverLogin");
 const userLogin = document.querySelector("#userLogin");
 const errorMessage=document.getElementById("errorMessage");
-const error=document.getElementById("error");
+const error1=document.getElementById("error1");
+const success=document.getElementById("success");
+const success1=document.getElementById("success1");
 
-
-
-
+const errorclass=errorMessage.classList;
+const successclass=success.classList;
 // driverLogin.onClick = (e) => {
 //   alert(" got clicked ");
 // };
@@ -38,21 +39,31 @@ driverLogin.addEventListener("click", () => {
         console.log(data);
         console.log("client", DASHBOARD_URL);
         if (data.key) {
-          console.log(" switch the dashboard ");
-          success.innerHTML="Loged In Successfully.";
-          success.style.visibility="visible";
+          //console.log(" switch the dashboard ");
+          // success.innerHTML="Loged In Successfully.";
+          // success.style.visibility="visible";
+          // setTimeout(()=>{
+          //   success.style.visibility="hidden";
+          // } , 2000 ) ; 
+          success1.innerHTML="Loged In Successfully.";
+          successclass.remove="d-none";
           setTimeout(()=>{
-            success.style.visibility="hidden";
-          } , 2000 ) ; 
+            successclass.add="d-none";
+          } , 2000 ) ;
           window.location.href = DASHBOARD_URL;
         } else {
           
-          errorMessage.innerHTML="Invalid Usename or Password";
-          error.style.visibility="visible";
+          error1.innerHTML="Invalid Usename or Password";
+          errorclass.remove="d-none";
           setTimeout(()=>{
-            error.style.visibility="hidden";
+            errorclass.add="d-none";
+          } , 2000 ) ;
+          // errorMessage.innerHTML="Invalid Usename or Password";
+          // error.style.visibility="visible";
+          // setTimeout(()=>{
+          //   error.style.visibility="hidden";
       
-          } , 2000 ) ; 
+          // } , 2000 ) ; 
         }
       });
   } else {
@@ -87,26 +98,36 @@ userLogin.addEventListener("click", () => {
         console.log(data);
         console.log("client", DASHBOARD_URL);
         if (data.key) {
-          console.log(" switch the dashboard ");
-          success.innerHTML="Loged In Successfully.";
-          success.style.visibility="visible";
+          // console.log(" switch the dashboard ");
+          // success.innerHTML="Loged In Successfully.";
+          // success.style.visibility="visible";
+          // setTimeout(()=>{
+          //   success.style.visibility="hidden";
+          // } , 2000 ) ; 
+          success1.innerHTML="Loged In Successfully.";
+          successclass.remove="d-none";
           setTimeout(()=>{
-            success.style.visibility="hidden";
-          } , 2000 ) ; 
+            successclass.add="d-none";
+          } , 2000 ) ;
           window.location.href = DASHBOARD_URL;
         } else {
-          errorMessage.innerHTML="Invalid Usename or Password";
-          error.style.visibility="visible";
-          setTimeout(()=>{
-            error.style.visibility="hidden";
+          // errorMessage.innerHTML="Invalid Usename or Password";
+          // error.style.visibility="visible";
+          // setTimeout(()=>{
+          //   error.style.visibility="hidden";
       
-          } , 2000 ) ; 
+          // } , 2000 ) ; 
+          error1.innerHTML="Invalid Usename or Password";
+          errorclass.remove="d-none";
+          setTimeout(()=>{
+            errorclass.add="d-none";
+          } , 2000 ) ;
         }
       }).catch(e=>{
         alert("Some error occur.");
       });
   } else {
-    alert("allow location access !!!! ");
+    alert("Please allow loaction. ");
   }
 
   //   alert(" got clicked ");

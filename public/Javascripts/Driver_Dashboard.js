@@ -154,10 +154,10 @@ DAvailable.addEventListener("click", () => {
         //   success.style.visibility="hidden";
         // } , 2000 ) ;
         success1.innerHTML="Marked Successfully";
-        successclass.remove="d-none";
+        successclass.remove("d-none");
         console.log( " successclass "  , successclass ) ; 
         setTimeout(()=>{
-          successclass.add="d-none";
+          successclass.add("d-none");
         } , 2000 ) ;
       } else {
         // errorMessage.innerHTML="some error occured!! Try again later";

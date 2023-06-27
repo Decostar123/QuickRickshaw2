@@ -17,7 +17,7 @@ mongoose
   .catch((err) => console.log("got error", err));
 
 const accountSid = "AC6311c17ca87cf589def81f6e2d98b7c5";
-const authToken = "6bd0eed1de20b59985153db3b7ea3b20";
+const authToken = "3a558defd7ff327369e07edda4350e7a";
 const verifySid = "VA55caca07005c95da0aa873a516248d6d";
 const client = require("twilio")(accountSid, authToken);
 
@@ -94,7 +94,8 @@ app.get("/", async (req, res) => {
       res.sendFile(__dirname + "/public/Login.html");
     }
   } else if (token2) {
-    const data = await jwt.verify(token2, process.env.DRIVER_JWT_KEY);
+    const data = await jwt.verify(token2, process.env.
+      DRIVER_JWT_KEY);
     if (data) {
       // console.log(data);
       // const string = `${data.info.pname},${data.info.ppassword}`;

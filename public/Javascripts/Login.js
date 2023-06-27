@@ -15,9 +15,9 @@ const successclass=success.classList;
 // let SIGNUP_URL = "http://localhost:3000/driver/signup";
 // let LOGIN_URL = "http://localhost:3000/driver/login ";
 // let DASHBOARD_URL = "http://localhost:3000/driver/dDashBoard ";
-let SIGNUP_URL = "https://quickrickshaws.onrender.com/driver/signup";
-let LOGIN_URL = "https://quickrickshaws.onrender.com/driver/login ";
-let DASHBOARD_URL = "https://quickrickshaws.onrender.com/driver/dDashBoard ";
+let SIGNUP_URL = "https://quickrickshaw-qij2.onrender.com/driver/signup";
+let LOGIN_URL = "https://quickrickshaw-qij2.onrender.com/driver/login ";
+let DASHBOARD_URL = "https://quickrickshaw-qij2.onrender.com/driver/dDashBoard ";
 driverLogin.addEventListener("click", () => {
   const resp = confirm(" allow access of location ");
   if (resp) {
@@ -78,8 +78,8 @@ userLogin.addEventListener("click", () => {
   const password = document.querySelector("#password").value;
   const data = { name, password };
 
-  LOGIN_URL = "https://quickrickshaws.onrender.com/user/login ";
-  DASHBOARD_URL = "https://quickrickshaws.onrender.com/user/dDashBoard";
+  LOGIN_URL = "https://quickrickshaw-qij2.onrender.com/user/login ";
+  DASHBOARD_URL = "https://quickrickshaw-qij2.onrender.com/user/dDashBoard";
   // LOGIN_URL = "http://localhost:3000/user/login ";
   // DASHBOARD_URL = "http://localhost:3000/user/dDashBoard";
   console.log(data);

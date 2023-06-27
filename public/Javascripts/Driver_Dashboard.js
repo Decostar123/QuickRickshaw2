@@ -12,12 +12,12 @@ const success1=document.getElementById("success1");
 // const DNotAvailable_URL = "http://localhost:3000/driver/DNotAvailable";
 // const DIPAddress = "http://localhost:3000/driver/DIPAddress";
 // const LOGOUT_URL = "http://localhost:3000/logout" ;
-
-const PASSENGER_URL = "https://quickrickshaws.onrender.com/driver/passengerList";
-const DAvailable_URL = "https://quickrickshaws.onrender.com/driver/DAvailable";
-const DNotAvailable_URL = "https://quickrickshaws.onrender.com/driver/DNotAvailable";
-const DIPAddress = "https://quickrickshaws.onrender.com/driver/DIPAddress";
-const LOGOUT_URL = "https://quickrickshaws.onrender.com/logout" ;
+// https://quickrickshaw-qij2.onrender.com
+const PASSENGER_URL = "https://quickrickshaw-qij2.onrender.com/driver/passengerList";
+const DAvailable_URL = "https://quickrickshaw-qij2.onrender.com/driver/DAvailable";
+const DNotAvailable_URL = "https://quickrickshaw-qij2.onrender.com/driver/DNotAvailable";
+const DIPAddress = "https://quickrickshaw-qij2.onrender.com/driver/DIPAddress";
+const LOGOUT_URL = "https://quickrickshaw-qij2.onrender.com/logout" ;
 const logOut = document.querySelector("#logOut") ; 
 
 // const send = document.querySelector("#send") ;
@@ -49,7 +49,7 @@ send.addEventListener( "click" , async ()=>{
   const feedback = document.querySelector("#floatingTextarea").value ; 
   console.log( feedback  ); 
   // const feedbackURL = "http://localhost:3000/driver/feedback" ; 
-  const feedbackURL = "https://quickrickshaws.onrender.com/driver/feedback" ; 
+  const feedbackURL = "https://quickrickshaw-qij2.onrender.com/driver/feedback" ; 
   const data = {feedback} ; 
   const resp1 = await fetch( feedbackURL , {
     method :"post" , 

@@ -7,7 +7,7 @@
 //   },
 // ];
 // const LOGOUT_URL = "http://localhost:3000/logout";
-const LOGOUT_URL = "https://quickrickshaws.onrender.com/logout";
+const LOGOUT_URL = "https://quickrickshaw-qij2.onrender.com/logout";
 const logOut = document.querySelector("#logOut") ; 
 logOut.addEventListener('click' , async () =>{
   console.log("aaaa") ; 
@@ -24,7 +24,7 @@ logOut.addEventListener('click' , async () =>{
 })
 // const PASSENGER_LIST = "http://localhost:3000/user/drivers";
 // const PASSENGER_LIST = "https://quickrickshaws.onrender.com/driver/passengers";
-const PASSENGER_LIST = "https://quickrickshaws.onrender.com/user/drivers";
+const PASSENGER_LIST = "https://quickrickshaw-qij2.onrender.com/user/drivers";
 // DO NOT CONFUSE WITH THE NAME .... 
 // const body = document.getElementsByTagName("body")[0];
 const temp = document.querySelector("#tables") ; 

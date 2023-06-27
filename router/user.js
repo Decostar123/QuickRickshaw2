@@ -17,6 +17,7 @@ router.get("/", (req, res) => {
   res.json({ key: "Welcome user" });
   // res.render("driverDsdhboard")
 });
+
 router.get("/dDashBoard", async (req, res) => {
   const token = req.cookies.USER_JWT_KEY;
   const data = await jwt.verify(token, process.env.USER_JWT_KEY);

@@ -188,6 +188,7 @@ DNotAvailable.addEventListener("click", () => {
         // } , 2000 ) ;
         success1.innerHTML="Removed Successfully";
         successclass.remove="d-none";
+        console.log( " successclass "  , successclass ) ; 
         setTimeout(()=>{
           successclass.add="d-none";
         } , 2000 ) ;

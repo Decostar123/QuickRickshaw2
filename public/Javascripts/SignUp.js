@@ -281,6 +281,7 @@ form.addEventListener("submit", async (e) => {
     else{
       success1.innerHTML="OTP Sended Successfully.";
       successclass.remove="d-none";
+      
       setTimeout(()=>{
         successclass.add="d-none";
       } , 2000 ) ;

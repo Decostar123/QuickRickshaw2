@@ -146,7 +146,7 @@ DAvailable.addEventListener("click", () => {
     .then((res) => res.json())
     .then((data) => {
       // alert("marked Available ");
-      console.log(data);
+      console.log(data , "marked Available "); 
       if (data.key) {
         // success.innerHTML="Marked Successfully.";
         // success.style.visibility="visible";
@@ -155,6 +155,7 @@ DAvailable.addEventListener("click", () => {
         // } , 2000 ) ;
         success1.innerHTML="Marked Successfully";
         successclass.remove="d-none";
+        console.log( " successclass "  , successclass ) ; 
         setTimeout(()=>{
           successclass.add="d-none";
         } , 2000 ) ;

@@ -239,9 +239,9 @@ form.addEventListener("submit", async (e) => {
   if( resp2.key )
   {
     error1.innerHTML="User Already Registered.";
-    errorclass.remove="d-none";
+    errorclass.remove("d-none");
     setTimeout(  ()=>{
-      errorclass.add="d-none";
+      errorclass.add("d-none");
 
     } , 2000 ) ; 
     // alert("already exist ") ; 
@@ -273,20 +273,20 @@ form.addEventListener("submit", async (e) => {
     const resp1 = await res1.json();
     if (!resp1.key) {
       error1.innerHTML="Some error occured in otp generation.";
-      errorclass.remove="d-none";
+      errorclass.remove("d-none");
       setTimeout(()=>{
-        errorclass.add="d-none";
+        errorclass.add("d-none");
       } , 2000 ) ;
     }
     else{
       success1.innerHTML="OTP Sended Successfully.";
-      successclass.remove="d-none";
+      successclass.remove("d-none");
       
       setTimeout(()=>{
-        successclass.add="d-none";
+        successclass.add("d-none");
       } , 2000 ) ;
-      otpclass.remove="d-none";
-      contentclass.add="d-none";
+      otpclass.remove("d-none");
+      contentclass.add("d-none");
       // otpbox.style.visibility="visible";
       // content.style.visibility="hidden";
       title1.style.visibility="hidden";
@@ -294,9 +294,9 @@ form.addEventListener("submit", async (e) => {
   }
   else{
     error1.innerHTML="Please fill the entire form";
-      errorclass.remove="d-none";
+      errorclass.remove("d-none");
       setTimeout(()=>{
-        errorclass.add="d-none";
+        errorclass.add("d-none");
       } , 2000 ) ;
   }
 
@@ -424,12 +424,12 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
         if (resp.key) {
           console.log(" Got true ");
           success1.innerHTML="Registered Successfully.";
-          successclass.remove="d-none";
+          successclass.remove("d-none");
           setTimeout(()=>{
-            successclass.add="d-none";
+            successclass.add("d-none");
           } , 2000 ) ;
-          otpclass.add="d-none";
-          contentclass.remove="d-none";
+          otpclass.add("d-none");
+          contentclass.remove("d-none");
           // success.innerHTML="Registered Successfully.";
           // success.style.visibility="visible";
           // setTimeout(()=>{
@@ -461,9 +461,9 @@ document.querySelector("#otpverify").addEventListener("click", async () => {
     // }
   } else {
      error1.innerHTML="Invalid Otp";
-      errorclass.remove="d-none";
+      errorclass.remove("d-none");
       setTimeout(()=>{
-        errorclass.add="d-none";
+        errorclass.add("d-none");
       } , 2000 ) ;
   }
 });

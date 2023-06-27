@@ -28,14 +28,14 @@ const successclass=success.classList;
 cancel.addEventListener( "click" , () =>{
   // feedbackCointainer.style.visibility = "hidden" ; 
   //     mainContainer.style.visibility = "visible" ; 
-  feedbackclass.add="d-none";
-  mainclass.remove="d-none";
+  feedbackclass.add("d-none");
+  mainclass.remove("d-none");
 })
 suggestion.addEventListener("click" , ()=>{
   // feedbackCointainer.style.visibility = "visible" ; 
   // mainContainer.style.visibility = "hidden" ; 
-  feedbackclass.remove="d-none";
-  mainclass.add="d-none";
+  feedbackclass.remove("d-none");
+  mainclass.add("d-none");
 })
 send.addEventListener( "click" , async ()=>{
   const feedback = document.querySelector("#floatingTextarea").value ; 
@@ -59,14 +59,14 @@ send.addEventListener( "click" , async ()=>{
       //   success.style.visibility="hidden";
       // } , 2000 ) ;
       success1.innerHTML="send successfully";
-      successclass.remove="d-none";
+      successclass.remove("d-none");
       setTimeout(()=>{
-        successclass.add="d-none";
+        successclass.add("d-none");
       } , 2000 ) ;
       // feedbackCointainer.style.visibility = "hidden" ; 
       // mainContainer.style.visibility = "visible" ; 
-      feedbackclass.add="d-none";
-      mainclass.remove="d-none";
+      feedbackclass.add("d-none");
+      mainclass.remove("d-none");
   }else{
     // alert(" error in sending ")  ; 
     // errorMessage.innerHTML="some error occured!! Try again later";
@@ -76,9 +76,9 @@ send.addEventListener( "click" , async ()=>{
     
     //     } , 2000 ) ; 
     error1.innerHTML="some error occured!! Try again later";
-    errorclass.remove="d-none";
+    errorclass.remove("d-none");
     setTimeout(()=>{
-      errorclass.add="d-none";
+      errorclass.add("d-none");
     } , 2000 ) ;
   }
 
@@ -93,9 +93,9 @@ logOut.addEventListener('click' , async () =>{
    const data = res.json() ; 
    console.log( data.key ) ;
    success1.innerHTML="Logged out successfully";
-    successclass.remove="d-none";
+    successclass.remove("d-none");
     setTimeout(()=>{
-      successclass.add="d-none";
+      successclass.add("d-none");
     } , 2000 ) ;
   }else{
     
@@ -120,9 +120,9 @@ DAvailable.addEventListener("click", () => {
         //   success.style.visibility="hidden";
         // } , 2000 ) ;
         success1.innerHTML="Marked Successfully";
-        successclass.remove="d-none";
+        successclass.remove("d-none");
         setTimeout(()=>{
-          successclass.add="d-none";
+          successclass.add("d-none");
         } , 2000 ) ;
       } else {
         // errorMessage.innerHTML="some error occured!! Try again later";
@@ -132,9 +132,9 @@ DAvailable.addEventListener("click", () => {
     
         // } , 2000 ) ; 
         error1.innerHTML="some error occured!! Try again later";
-        errorclass.remove="d-none";
+        errorclass.remove("d-none");
         setTimeout(()=>{
-          errorclass.add="d-none";
+          errorclass.add("d-none");
         } , 2000 ) ;
       }
     });
@@ -153,9 +153,9 @@ DNotAvailable.addEventListener("click", () => {
         //   success.style.visibility="hidden";
         // } , 2000 ) ;
         success1.innerHTML="Removed Successfully";
-        successclass.remove="d-none";
+        successclass.remove("d-none");
         setTimeout(()=>{
-          successclass.add="d-none";
+          successclass.add("d-none");
         } , 2000 ) ;
       } else {
         // errorMessage.innerHTML="some error occured!! Try again later";
@@ -163,9 +163,9 @@ DNotAvailable.addEventListener("click", () => {
         // setTimeout(()=>{
         //   error.style.visibility="hidden";
         error1.innerHTML="some error occured!! Try again later";
-        errorclass.remove="d-none";
+        errorclass.remove("d-none");
         setTimeout(()=>{
-          errorclass.add="d-none";
+          errorclass.add("d-none");
         } , 2000 ) ;
     
         // } , 2000 ) ; 

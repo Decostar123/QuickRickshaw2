@@ -46,17 +46,17 @@ driverLogin.addEventListener("click", () => {
           //   success.style.visibility="hidden";
           // } , 2000 ) ; 
           success1.innerHTML="Loged In Successfully.";
-          successclass.remove="d-none";
+          successclass.remove("d-none");
           setTimeout(()=>{
-            successclass.add="d-none";
+            successclass.add("d-none");
           } , 2000 ) ;
           window.location.href = DASHBOARD_URL;
         } else {
           
           error1.innerHTML="Invalid Usename or Password";
-          errorclass.remove="d-none";
+          errorclass.remove("d-none");
           setTimeout(()=>{
-            errorclass.add="d-none";
+            errorclass.add("d-none");
           } , 2000 ) ;
           // errorMessage.innerHTML="Invalid Usename or Password";
           // error.style.visibility="visible";
@@ -105,9 +105,9 @@ userLogin.addEventListener("click", () => {
           //   success.style.visibility="hidden";
           // } , 2000 ) ; 
           success1.innerHTML="Loged In Successfully.";
-          successclass.remove="d-none";
+          successclass.remove("d-none");
           setTimeout(()=>{
-            successclass.add="d-none";
+            successclass.add("d-none");
           } , 2000 ) ;
           window.location.href = DASHBOARD_URL;
         } else {
@@ -118,9 +118,9 @@ userLogin.addEventListener("click", () => {
       
           // } , 2000 ) ; 
           error1.innerHTML="Invalid Usename or Password";
-          errorclass.remove="d-none";
+          errorclass.remove("d-none");
           setTimeout(()=>{
-            errorclass.add="d-none";
+            errorclass.add("d-none");
           } , 2000 ) ;
         }
       }).catch(e=>{

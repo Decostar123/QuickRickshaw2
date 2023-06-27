@@ -15,7 +15,7 @@ const title1=document.getElementById("title1");
 const error1=document.getElementById("error1");
 const success=document.getElementById("success");
 const success1=document.getElementById("success1");
-
+const content=document.getElementById("content");  //signup page
 const nameclass=name1.classList;
 const emailclass=email1.classList;
 const phoneclass=phone.classList;
@@ -25,7 +25,7 @@ const errorclass=errorMessage.classList;
 const successclass=success.classList;
 const otpclass=otpbox.classList;
 const contentclass=content.classList;
-const content=document.getElementById("content");  //signup page
+
 
 const resendOTP = document.getElementById("resendOTP") ; 
 resendOTP.addEventListener("click" , async ()=>{

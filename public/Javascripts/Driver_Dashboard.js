@@ -7,6 +7,12 @@ const error1=document.getElementById("error1");
 const success=document.getElementById("success");
 const success1=document.getElementById("success1");
 
+const send = document.querySelector("#send") ;  
+const suggestion  = document.querySelector("#suggestion") ; 
+const feedbackCointainer  = document.querySelector("#feedbackCointainer") ; 
+const cancel =  document.querySelector("#cancel") ;  
+const  mainContainer = document.querySelector("#mainContainer") ; 
+
 // const PASSENGER_URL = "http://localhost:3000/driver/passengerList";
 // const DAvailable_URL = "http://localhost:3000/driver/DAvailable";
 // const DNotAvailable_URL = "http://localhost:3000/driver/DNotAvailable";
@@ -28,11 +34,7 @@ const successclass=success.classList;
 
 
 
-const send = document.querySelector("#send") ;  
-const suggestion  = document.querySelector("#suggestion") ; 
-const feedbackCointainer  = document.querySelector("#feedbackCointainer") ; 
-const cancel =  document.querySelector("#cancel") ;  
-const  mainContainer = document.querySelector("#mainContainer") ; 
+
 cancel.addEventListener( "click" , () =>{
   // feedbackCointainer.style.visibility = "hidden" ; 
   //     mainContainer.style.visibility = "visible" ; 
